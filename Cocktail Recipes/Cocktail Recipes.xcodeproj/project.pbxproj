@@ -16,6 +16,8 @@
 		D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A32AFFA2CE0063851D /* ApiConstants.swift */; };
 		D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A52AFFA3AA0063851D /* DrinkModel.swift */; };
 		D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A72AFFA6B80063851D /* IngredientModel.swift */; };
+		D17D79AA2AFFC0B70063851D /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17D79A92AFFC0B70063851D /* Catalog.storyboard */; };
+		D17D79AC2AFFC1820063851D /* CatalogTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79AB2AFFC1820063851D /* CatalogTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		D17D79A32AFFA2CE0063851D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		D17D79A52AFFA3AA0063851D /* DrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkModel.swift; sourceTree = "<group>"; };
 		D17D79A72AFFA6B80063851D /* IngredientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
+		D17D79A92AFFC0B70063851D /* Catalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Catalog.storyboard; sourceTree = "<group>"; };
+		D17D79AB2AFFC1820063851D /* CatalogTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 		D17D79972AFFA0B00063851D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D17D79A92AFFC0B70063851D /* Catalog.storyboard */,
 				D17D798E2AFF9AAF0063851D /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -111,6 +116,7 @@
 		D17D799B2AFFA0EA0063851D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D17D79AB2AFFC1820063851D /* CatalogTVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D17D79AA2AFFC0B70063851D /* Catalog.storyboard in Resources */,
 				D17D79902AFF9AAF0063851D /* LaunchScreen.storyboard in Resources */,
 				D17D798D2AFF9AAF0063851D /* Assets.xcassets in Resources */,
 			);
@@ -201,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */,
+				D17D79AC2AFFC1820063851D /* CatalogTVC.swift in Sources */,
 				D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */,
 				D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */,
 				D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */,
@@ -355,7 +363,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Catalog;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -389,7 +397,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Catalog;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

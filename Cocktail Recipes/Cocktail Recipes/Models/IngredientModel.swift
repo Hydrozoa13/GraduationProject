@@ -9,10 +9,10 @@ import Foundation
 
 struct Ingredient: Codable {
     
-    let id: Int
-    let ingredient: String?
-    let description: String?
-    let type: String?
-    let alcohol: String?
-    let abv: String?
+    let idIngredient: Int
+    let strIngredient: String?
+    let strDescription: String?
+    let strType: String?
+    let strAlcohol: String?
+    let strABV: String?
 }

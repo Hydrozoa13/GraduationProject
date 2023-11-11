@@ -9,5 +9,8 @@ import Foundation
 
 struct ApiConstants {
     
-    static let serverPath = "www.thecocktaildb.com/api/json/v1/1/"
+    static let serverPath = "https://www.thecocktaildb.com/api/json/v1/1/"
+    
+    static let alcoholicPath = serverPath + "filter.php?a=Alcoholic"
+    static let alcoholicURL = URL(string: alcoholicPath)
 }
