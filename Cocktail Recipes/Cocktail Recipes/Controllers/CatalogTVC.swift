@@ -9,7 +9,8 @@ import UIKit
 
 class CatalogTVC: UITableViewController {
     
-    var drinks: [String:[Drink]] = [:]
+    var drinksData: [String:[Drink]] = [:]
+    var drinks: [Drink] = []
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -19,15 +20,13 @@ class CatalogTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = drinks["drinks"]?.count else { return 0 }
-        return count
+        drinks.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let array = drinks["drinks"]
-        let drink = array?[indexPath.row]
-        cell.textLabel?.text = drink?.strDrink
+        let drink = drinks[indexPath.row]
+        cell.textLabel?.text = drink.strDrink
         return cell
     }
 
@@ -83,7 +82,9 @@ class CatalogTVC: UITableViewController {
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                drinks = try JSONDecoder().decode([String:[Drink]].self, from: data)
+                drinksData = try JSONDecoder().decode([String:[Drink]].self, from: data)
+                guard let array = drinksData["drinks"] else { return }
+                drinks = array
             } catch {
                 print(error)
             }
