@@ -13,4 +13,7 @@ struct ApiConstants {
     
     static let alcoholicPath = serverPath + "filter.php?a=Alcoholic"
     static let alcoholicURL = URL(string: alcoholicPath)
+    
+    static let nonAlcoholicPath = serverPath + "filter.php?a=Non_Alcoholic"
+    static let nonAlcoholicURL = URL(string: nonAlcoholicPath)
 }

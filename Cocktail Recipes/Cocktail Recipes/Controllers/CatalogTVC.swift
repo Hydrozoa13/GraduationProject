@@ -14,9 +14,15 @@ class CatalogTVC: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchDrinks()
+        fetchDrinks(url: ApiConstants.alcoholicURL)
     }
-
+    
+    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
+        let index = sender.selectedSegmentIndex
+        let url = index == 0 ? ApiConstants.alcoholicURL : ApiConstants.nonAlcoholicURL
+        fetchDrinks(url: url)
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,8 +83,8 @@ class CatalogTVC: UITableViewController {
     
     // MARK: - Private functions
     
-    private func fetchDrinks() {
-        guard let url = ApiConstants.alcoholicURL else { return }
+    private func fetchDrinks(url: URL?) {
+        guard let url else { return }
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
