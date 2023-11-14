@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79832AFF9AAD0063851D /* AppDelegate.swift */; };
 		D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79852AFF9AAD0063851D /* SceneDelegate.swift */; };
-		D17D79882AFF9AAD0063851D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79872AFF9AAD0063851D /* ViewController.swift */; };
-		D17D798B2AFF9AAD0063851D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17D79892AFF9AAD0063851D /* Main.storyboard */; };
 		D17D798D2AFF9AAF0063851D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17D798C2AFF9AAF0063851D /* Assets.xcassets */; };
 		D17D79902AFF9AAF0063851D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17D798E2AFF9AAF0063851D /* LaunchScreen.storyboard */; };
+		D17D799F2AFFA1F00063851D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D17D799E2AFFA1F00063851D /* Alamofire */; };
+		D17D79A22AFFA2920063851D /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D17D79A12AFFA2920063851D /* SwiftyJSON */; };
+		D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A32AFFA2CE0063851D /* ApiConstants.swift */; };
+		D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A52AFFA3AA0063851D /* DrinkModel.swift */; };
+		D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A72AFFA6B80063851D /* IngredientModel.swift */; };
+		D17D79AA2AFFC0B70063851D /* Catalog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17D79A92AFFC0B70063851D /* Catalog.storyboard */; };
+		D17D79AC2AFFC1820063851D /* CatalogTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79AB2AFFC1820063851D /* CatalogTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D17D79802AFF9AAD0063851D /* Cocktail Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cocktail Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17D79832AFF9AAD0063851D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17D79852AFF9AAD0063851D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D17D79872AFF9AAD0063851D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D17D798A2AFF9AAD0063851D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D17D798C2AFF9AAF0063851D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D17D798F2AFF9AAF0063851D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D17D79912AFF9AAF0063851D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D17D79A32AFFA2CE0063851D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
+		D17D79A52AFFA3AA0063851D /* DrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkModel.swift; sourceTree = "<group>"; };
+		D17D79A72AFFA6B80063851D /* IngredientModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientModel.swift; sourceTree = "<group>"; };
+		D17D79A92AFFC0B70063851D /* Catalog.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Catalog.storyboard; sourceTree = "<group>"; };
+		D17D79AB2AFFC1820063851D /* CatalogTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D17D79A22AFFA2920063851D /* SwiftyJSON in Frameworks */,
+				D17D799F2AFFA1F00063851D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +66,66 @@
 		D17D79822AFF9AAD0063851D /* Cocktail Recipes */ = {
 			isa = PBXGroup;
 			children = (
-				D17D79832AFF9AAD0063851D /* AppDelegate.swift */,
-				D17D79852AFF9AAD0063851D /* SceneDelegate.swift */,
-				D17D79872AFF9AAD0063851D /* ViewController.swift */,
-				D17D79892AFF9AAD0063851D /* Main.storyboard */,
-				D17D798C2AFF9AAF0063851D /* Assets.xcassets */,
-				D17D798E2AFF9AAF0063851D /* LaunchScreen.storyboard */,
+				D17D799C2AFFA10C0063851D /* Services */,
+				D17D799A2AFFA0E40063851D /* Models */,
+				D17D79972AFFA0B00063851D /* Views */,
+				D17D799B2AFFA0EA0063851D /* Controllers */,
+				D17D79982AFFA0C00063851D /* AppDelegates */,
+				D17D79992AFFA0D70063851D /* Assets */,
 				D17D79912AFF9AAF0063851D /* Info.plist */,
 			);
 			path = "Cocktail Recipes";
+			sourceTree = "<group>";
+		};
+		D17D79972AFFA0B00063851D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D17D79A92AFFC0B70063851D /* Catalog.storyboard */,
+				D17D798E2AFF9AAF0063851D /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D17D79982AFFA0C00063851D /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				D17D79832AFF9AAD0063851D /* AppDelegate.swift */,
+				D17D79852AFF9AAD0063851D /* SceneDelegate.swift */,
+			);
+			path = AppDelegates;
+			sourceTree = "<group>";
+		};
+		D17D79992AFFA0D70063851D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D17D798C2AFF9AAF0063851D /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		D17D799A2AFFA0E40063851D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D17D79A32AFFA2CE0063851D /* ApiConstants.swift */,
+				D17D79A52AFFA3AA0063851D /* DrinkModel.swift */,
+				D17D79A72AFFA6B80063851D /* IngredientModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D17D799B2AFFA0EA0063851D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D17D79AB2AFFC1820063851D /* CatalogTVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D17D799C2AFFA10C0063851D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +144,10 @@
 			dependencies = (
 			);
 			name = "Cocktail Recipes";
+			packageProductDependencies = (
+				D17D799E2AFFA1F00063851D /* Alamofire */,
+				D17D79A12AFFA2920063851D /* SwiftyJSON */,
+			);
 			productName = "Cocktail Recipes";
 			productReference = D17D79802AFF9AAD0063851D /* Cocktail Recipes.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +176,10 @@
 				Base,
 			);
 			mainGroup = D17D79772AFF9AAD0063851D;
+			packageReferences = (
+				D17D799D2AFFA1F00063851D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = D17D79812AFF9AAD0063851D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +194,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D17D79AA2AFFC0B70063851D /* Catalog.storyboard in Resources */,
 				D17D79902AFF9AAF0063851D /* LaunchScreen.storyboard in Resources */,
 				D17D798D2AFF9AAF0063851D /* Assets.xcassets in Resources */,
-				D17D798B2AFF9AAD0063851D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +207,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D17D79882AFF9AAD0063851D /* ViewController.swift in Sources */,
 				D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */,
+				D17D79AC2AFFC1820063851D /* CatalogTVC.swift in Sources */,
+				D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */,
 				D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */,
+				D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */,
+				D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D17D79892AFF9AAD0063851D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D17D798A2AFF9AAD0063851D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D17D798E2AFF9AAF0063851D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -295,21 +359,27 @@
 				DEVELOPMENT_TEAM = 2BFD7M72TY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Cocktail Recipes/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Cocktail Recipes";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = Catalog;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.Cocktail-Recipes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,21 +393,27 @@
 				DEVELOPMENT_TEAM = 2BFD7M72TY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Cocktail Recipes/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Cocktail Recipes";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = Catalog;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.Cocktail-Recipes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -363,6 +439,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D17D799D2AFFA1F00063851D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D17D799E2AFFA1F00063851D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D17D799D2AFFA1F00063851D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		D17D79A12AFFA2920063851D /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D17D79782AFF9AAD0063851D /* Project object */;
 }
