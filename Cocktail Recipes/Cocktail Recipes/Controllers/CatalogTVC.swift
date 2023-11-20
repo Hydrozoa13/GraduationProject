@@ -17,6 +17,11 @@ class CatalogTVC: UITableViewController {
         fetchDrinks(url: ApiConstants.alcoholicURL)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: "CatalogCell", bundle: nil), forCellReuseIdentifier: "Cell")
+    }
+    
     @IBAction func segmentedControl(_ sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
         let url = index == 0 ? ApiConstants.alcoholicURL : ApiConstants.nonAlcoholicURL
@@ -30,9 +35,10 @@ class CatalogTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatalogCell
         let drink = drinks[indexPath.row]
-        cell.textLabel?.text = drink.strDrink
+        cell.thumbnailUrl = drink.strDrinkThumb
+        cell.textLbl.text = drink.strDrink
         return cell
     }
 
