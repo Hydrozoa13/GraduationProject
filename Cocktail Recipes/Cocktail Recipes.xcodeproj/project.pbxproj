@@ -22,6 +22,7 @@
 		D19C1D5D2B0BC37500B6AD6A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */; };
 		D19C1D602B0BDB6D00B6AD6A /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D5E2B0BDB6D00B6AD6A /* CatalogCell.swift */; };
 		D19C1D612B0BDB6D00B6AD6A /* CatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */; };
+		D19C1D642B0BEB0900B6AD6A /* CatalogTVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D19C1D5E2B0BDB6D00B6AD6A /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
 		D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogCell.xib; sourceTree = "<group>"; };
+		D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTVCExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		D17D79822AFF9AAD0063851D /* Cocktail Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				D19C1D622B0BEAF400B6AD6A /* Extensions */,
 				D17D799C2AFFA10C0063851D /* Services */,
 				D17D799A2AFFA0E40063851D /* Models */,
 				D17D79972AFFA0B00063851D /* Views */,
@@ -145,6 +148,14 @@
 				D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		D19C1D622B0BEAF400B6AD6A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */,
 				D17D79AC2AFFC1820063851D /* CatalogTVC.swift in Sources */,
 				D19C1D5D2B0BC37500B6AD6A /* NetworkService.swift in Sources */,
+				D19C1D642B0BEB0900B6AD6A /* CatalogTVCExt.swift in Sources */,
 				D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */,
 				D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */,
 				D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */,
