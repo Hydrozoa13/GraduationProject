@@ -30,6 +30,8 @@ class CatalogTVC: UITableViewController {
     }
     
     @IBAction func segmentedControl(_ sender: UISegmentedControl) {
+        isSearching = false
+        searchBar.text = ""
         let index = sender.selectedSegmentIndex
         let url = index == 0 ? ApiConstants.alcoholicURL : ApiConstants.nonAlcoholicURL
         fetchDrinks(url: url)
