@@ -9,15 +9,29 @@ import UIKit
 
 class CatalogTVC: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var drinksData: [String:[Drink]] = [:]
     var drinks: [Drink] = []
+    var filteredDrinks: [Drink] = []
+    var isSearching = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.searchBar.delegate = self
         fetchDrinks(url: ApiConstants.alcoholicURL)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "Cocktails"
+        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
+                                 forCellReuseIdentifier: "Cell")
+    }
+    
     @IBAction func segmentedControl(_ sender: UISegmentedControl) {
+        isSearching = false
+        searchBar.text = ""
         let index = sender.selectedSegmentIndex
         let url = index == 0 ? ApiConstants.alcoholicURL : ApiConstants.nonAlcoholicURL
         fetchDrinks(url: url)
@@ -26,13 +40,15 @@ class CatalogTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        drinks.count
+        let count = isSearching ? filteredDrinks.count : drinks.count
+        return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let drink = drinks[indexPath.row]
-        cell.textLabel?.text = drink.strDrink
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatalogCell
+        let drink = isSearching ? filteredDrinks[indexPath.row] : drinks[indexPath.row]
+        cell.thumbnailUrl = drink.strDrinkThumb
+        cell.textLbl.text = drink.strDrink
         return cell
     }
 
