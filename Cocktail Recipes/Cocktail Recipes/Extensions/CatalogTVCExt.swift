@@ -10,7 +10,7 @@ import UIKit
 extension CatalogTVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        self.filteredDrinks.removeAll()
+        filteredDrinks.removeAll()
         
         guard searchText != "" || searchText != " " else { return }
         

@@ -11,19 +11,19 @@ class CatalogTVC: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var drinksData: [String:[Drink]] = [:]
+    private var drinksData: [String:[Drink]] = [:]
     var drinks: [Drink] = []
     var filteredDrinks: [Drink] = []
     var isSearching = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.searchBar.delegate = self
         fetchDrinks(url: ApiConstants.alcoholicURL)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.searchBar.delegate = self
         navigationItem.title = "Cocktails"
         tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
                                  forCellReuseIdentifier: "Cell")
