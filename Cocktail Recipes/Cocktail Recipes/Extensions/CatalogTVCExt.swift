@@ -8,6 +8,7 @@
 import UIKit
 
 extension CatalogTVC: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         filteredDrinks.removeAll()
@@ -23,5 +24,9 @@ extension CatalogTVC: UISearchBarDelegate {
         
         isSearching = searchBar.text == "" ? false : true
         tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 }
