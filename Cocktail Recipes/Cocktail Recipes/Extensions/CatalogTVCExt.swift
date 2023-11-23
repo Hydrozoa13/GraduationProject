@@ -10,19 +10,14 @@ import UIKit
 extension CatalogTVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        filteredDrinks.removeAll()
-        
-        guard searchText != "" || searchText != " " else { return }
-        
-        for drink in self.drinks {
+        if !searchText.isEmpty {
             let text = searchText.lowercased()
-            if let _ = drink.strDrink?.lowercased().range(of: text) {
-                filteredDrinks.append(drink)
-            }
+            filteredDrinks = drinks.filter({$0.strDrink!.lowercased().contains(text)})
+            isSearching = true
+        } else {
+            filteredDrinks = drinks
+            isSearching = false
         }
-        
-        isSearching = searchBar.text == "" ? false : true
         tableView.reloadData()
     }
     
