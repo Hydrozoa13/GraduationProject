@@ -12,10 +12,12 @@ extension CatalogTVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             let text = searchText.lowercased()
-            filteredDrinks = drinks.filter({$0.strDrink!.lowercased().contains(text)})
+            filteredAlcoholicDrinks = alcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
+            filteredNonAlcoholicDrinks = nonAlcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
             isSearching = true
         } else {
-            filteredDrinks = drinks
+            filteredAlcoholicDrinks = alcoholicDrinks
+            filteredNonAlcoholicDrinks = nonAlcoholicDrinks
             isSearching = false
         }
         tableView.reloadData()

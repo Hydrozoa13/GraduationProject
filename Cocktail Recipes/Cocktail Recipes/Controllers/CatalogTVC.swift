@@ -11,42 +11,63 @@ class CatalogTVC: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    private var drinksData: [String:[Drink]] = [:]
-    var drinks: [Drink] = []
-    var filteredDrinks: [Drink] = []
+    private var drinksData = [String:[Drink]]()
+    var alcoholicDrinks = [Drink]()
+    var nonAlcoholicDrinks = [Drink]()
+    var filteredAlcoholicDrinks = [Drink]()
+    var filteredNonAlcoholicDrinks = [Drink]()
     var isSearching = false
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        fetchDrinks(url: ApiConstants.alcoholicURL)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchBar.delegate = self
-        navigationItem.title = "Cocktails"
         tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
                                  forCellReuseIdentifier: "Cell")
-    }
-    
-    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
-        isSearching = false
-        searchBar.text = ""
-        let index = sender.selectedSegmentIndex
-        let url = index == 0 ? ApiConstants.alcoholicURL : ApiConstants.nonAlcoholicURL
-        fetchDrinks(url: url)
+        navigationItem.titleView = searchBar
+        
+        fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic)
+        fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
     }
     
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int { 2 }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var title = ""
+        
+        if section == 0 {
+            title = isSearching && filteredAlcoholicDrinks.isEmpty ? "" : "Alcoholic"
+        } else {
+            title = isSearching && filteredNonAlcoholicDrinks.isEmpty ? "" : "Non Alcoholic"
+        }
+        
+        return title
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = isSearching ? filteredDrinks.count : drinks.count
+        var count = 0
+        
+        if section == 0 {
+            count = isSearching ? filteredAlcoholicDrinks.count : alcoholicDrinks.count
+        } else {
+            count = isSearching ? filteredNonAlcoholicDrinks.count : nonAlcoholicDrinks.count
+        }
+        
         return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatalogCell
-        let drink = isSearching ? filteredDrinks[indexPath.row] : drinks[indexPath.row]
+        var drink: Drink?
+        
+        if indexPath.section == 0 {
+            drink = isSearching ? filteredAlcoholicDrinks[indexPath.row] : alcoholicDrinks[indexPath.row]
+        } else {
+            drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
+        }
+        
+        guard let drink else { return cell }
         cell.thumbnailUrl = drink.strDrinkThumb
         cell.textLbl.text = drink.strDrink
         return cell
@@ -99,14 +120,17 @@ class CatalogTVC: UITableViewController {
     
     // MARK: - Private functions
     
-    private func fetchDrinks(url: URL?) {
+    private func fetchDrinks(url: URL?, drinkType: DrinkType) {
         guard let url else { return }
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
                 drinksData = try JSONDecoder().decode([String:[Drink]].self, from: data)
                 guard let array = drinksData["drinks"] else { return }
-                drinks = array
+                switch drinkType {
+                    case .alcoholic: alcoholicDrinks = array
+                    case .nonAlcoholic: nonAlcoholicDrinks = array
+                }
             } catch {
                 print(error)
             }
