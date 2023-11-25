@@ -34,7 +34,14 @@ class CatalogTVC: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int { 2 }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let title = section == 0 ? "Alcoholic" : "Non Alcoholic"
+        var title = ""
+        
+        if section == 0 {
+            title = isSearching && filteredAlcoholicDrinks.isEmpty ? "" : "Alcoholic"
+        } else {
+            title = isSearching && filteredNonAlcoholicDrinks.isEmpty ? "" : "Non Alcoholic"
+        }
+        
         return title
     }
     
