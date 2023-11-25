@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum DrinkType {
+    case alcoholic
+    case nonAlcoholic
+}
+
 struct Drink: Codable {
     
     let idDrink: String

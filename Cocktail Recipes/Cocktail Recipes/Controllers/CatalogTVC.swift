@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum DrinkType {
-    case alcoholic
-    case nonAlcoholic
-}
-
 class CatalogTVC: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -19,7 +14,8 @@ class CatalogTVC: UITableViewController {
     private var drinksData = [String:[Drink]]()
     var alcoholicDrinks = [Drink]()
     var nonAlcoholicDrinks = [Drink]()
-    var filteredDrinks = [Drink]()
+    var filteredAlcoholicDrinks = [Drink]()
+    var filteredNonAlcoholicDrinks = [Drink]()
     var isSearching = false
     
     override func viewDidLoad() {
@@ -27,6 +23,7 @@ class CatalogTVC: UITableViewController {
         self.searchBar.delegate = self
         tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
                                  forCellReuseIdentifier: "Cell")
+        navigationItem.titleView = searchBar
         
         fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic)
         fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
@@ -34,49 +31,38 @@ class CatalogTVC: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        let count = isSearching ? 1 : 2
-        return count
-    }
+    override func numberOfSections(in tableView: UITableView) -> Int { 2 }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var title = section == 0 ? "Alcoholic" : "Non Alcoholic"
-        
-        if isSearching {
-            title = ""
-        }
-        
+        let title = section == 0 ? "Alcoholic" : "Non Alcoholic"
         return title
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let count = isSearching ? filteredDrinks.count : drinks.count
-//        return count
         var count = 0
         
         if section == 0 {
-            count = isSearching ? filteredDrinks.count : alcoholicDrinks.count
+            count = isSearching ? filteredAlcoholicDrinks.count : alcoholicDrinks.count
         } else {
-            count = nonAlcoholicDrinks.count
+            count = isSearching ? filteredNonAlcoholicDrinks.count : nonAlcoholicDrinks.count
         }
         
         return count
-    
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatalogCell
-//        let drink = isSearching ? filteredDrinks[indexPath.row] : drinks[indexPath.row]
+        var drink: Drink?
         
-        var drink = indexPath.section == 0 ? alcoholicDrinks[indexPath.row] :                       nonAlcoholicDrinks[indexPath.row]
-        
-        if isSearching {
-            drink = filteredDrinks[indexPath.row]
+        if indexPath.section == 0 {
+            drink = isSearching ? filteredAlcoholicDrinks[indexPath.row] : alcoholicDrinks[indexPath.row]
+        } else {
+            drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
         }
         
+        guard let drink else { return cell }
         cell.thumbnailUrl = drink.strDrinkThumb
         cell.textLbl.text = drink.strDrink
-        
         return cell
     }
 
