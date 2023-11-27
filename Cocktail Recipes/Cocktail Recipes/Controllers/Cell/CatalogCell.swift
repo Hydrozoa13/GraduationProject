@@ -22,8 +22,9 @@ class CatalogCell: UITableViewCell {
     }
     
     private func getThumbnailUrl() {
-        guard let thumbnailUrl = thumbnailUrl else { return }
-        NetworkService.getThumbnail(thumbnailUrl: thumbnailUrl) { [weak self] image, error in
+        guard let thumbnailUrl else { return }
+        let url = thumbnailUrl + "/preview"
+        NetworkService.getThumbnail(thumbnailUrl: url) { [weak self] image, error in
             self?.activityIndicator.stopAnimating()
             self?.cocktailThumb.layer.cornerRadius = 15
             self?.cocktailThumb.image = image
