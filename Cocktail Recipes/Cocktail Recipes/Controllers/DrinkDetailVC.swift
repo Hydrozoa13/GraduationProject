@@ -9,13 +9,22 @@ import UIKit
 
 class DrinkDetailVC: UIViewController {
     
-    @IBOutlet weak var strDrink: UILabel!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var strDrink: UILabel!
+    @IBOutlet private weak var strInstructions: UILabel!
     
-    var drink: Drink?
+    var drinkId: String?
+    private var drinkData = [String:[Drink]]()
+    private var drink: Drink? {
+        didSet {
+            getThumbnailUrl()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        strDrink.text = drink?.strDrink
+        fetchDrinkDetails(drinkId: drinkId)
     }
     
 
@@ -28,5 +37,37 @@ class DrinkDetailVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    //MARK: - Private functions
+    
+    private func fetchDrinkDetails(drinkId: String?) {
+        guard let drinkId,
+              let url = URL(string: ApiConstants.drinkDetailPath + drinkId) else { return }
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
+            guard let self, let data else { return }
+            do {
+                drinkData = try JSONDecoder().decode([String:[Drink]].self, from: data)
+                drink = drinkData["drinks"]?.first
+            } catch {
+                print(error)
+            }
+            DispatchQueue.main.async {
+                self.setupDrinkDetail()
+            }
+        }.resume()
+    }
+    
+    private func setupDrinkDetail() {
+        strDrink.text = drink?.strDrink
+        strInstructions.text = drink?.strInstructions
+        
+    }
+    
+    private func getThumbnailUrl() {
+        guard let thumbnailUrl = drink?.strDrinkThumb else { return }
+        NetworkService.getThumbnail(thumbnailUrl: thumbnailUrl) { [weak self] image, error in
+            self?.activityIndicator.stopAnimating()
+            self?.imageView.image = image
+        }
+    }
 }

@@ -340,14 +340,19 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="OJg-6i-LX6">
+                                                <rect key="frame" x="178" y="178" width="37" height="37"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="OJg-6i-LX6" firstAttribute="centerY" secondItem="HgL-xq-xpF" secondAttribute="centerY" id="2Gz-qr-UV7"/>
                                             <constraint firstItem="Nsj-In-NC9" firstAttribute="leading" secondItem="YqQ-xZ-h4M" secondAttribute="leading" constant="15" id="2Sg-g1-Ifb"/>
                                             <constraint firstAttribute="trailing" secondItem="Nsj-In-NC9" secondAttribute="trailing" constant="15" id="9Km-5F-Zga"/>
                                             <constraint firstAttribute="bottom" secondItem="H25-lT-vfX" secondAttribute="bottom" constant="15" id="B0p-Zv-hcq"/>
                                             <constraint firstItem="Nsj-In-NC9" firstAttribute="top" secondItem="HgL-xq-xpF" secondAttribute="bottom" constant="15" id="KNQ-3k-yjH"/>
                                             <constraint firstItem="yQx-vY-1Xu" firstAttribute="leading" secondItem="YqQ-xZ-h4M" secondAttribute="leading" constant="15" id="X2f-5b-Ssq"/>
+                                            <constraint firstItem="OJg-6i-LX6" firstAttribute="centerX" secondItem="HgL-xq-xpF" secondAttribute="centerX" id="XNe-Ox-URM"/>
                                             <constraint firstItem="H25-lT-vfX" firstAttribute="leading" secondItem="YqQ-xZ-h4M" secondAttribute="leading" constant="15" id="aOu-Vz-yWf"/>
                                             <constraint firstItem="HgL-xq-xpF" firstAttribute="top" secondItem="YqQ-xZ-h4M" secondAttribute="top" id="anx-0h-HzW"/>
                                             <constraint firstAttribute="trailing" secondItem="HgL-xq-xpF" secondAttribute="trailing" id="d03-rO-baK"/>
@@ -381,7 +386,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="MVY-CP-Tm5"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="OJg-6i-LX6" id="QRU-vZ-R2d"/>
+                        <outlet property="imageView" destination="HgL-xq-xpF" id="uro-7i-QTy"/>
                         <outlet property="strDrink" destination="Nsj-In-NC9" id="sOB-9C-bPc"/>
+                        <outlet property="strInstructions" destination="H25-lT-vfX" id="a6A-bK-4hX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lmh-s0-hAw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

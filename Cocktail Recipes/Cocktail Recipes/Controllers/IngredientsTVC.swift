@@ -9,7 +9,7 @@ import UIKit
 
 class IngredientsTVC: UITableViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     private var ingredientsData = [String:[Ingredient]]()
     var ingredients = [Ingredient]()
@@ -90,6 +90,8 @@ class IngredientsTVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Private functions
 
     private func fetchIngredients(url: URL?) {
         guard let url else { return }

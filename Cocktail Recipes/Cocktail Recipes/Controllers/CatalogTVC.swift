@@ -9,7 +9,7 @@ import UIKit
 
 class CatalogTVC: UITableViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
     private var drinksData = [String:[Drink]]()
     var alcoholicDrinks = [Drink]()
@@ -42,7 +42,7 @@ class CatalogTVC: UITableViewController {
             drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
         }
         
-        vc.drink = drink
+        vc.drinkId = drink?.idDrink
         navigationController?.pushViewController(vc, animated: true)
     }
     

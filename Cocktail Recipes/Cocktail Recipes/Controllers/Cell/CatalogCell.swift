@@ -11,8 +11,8 @@ import AlamofireImage
 
 class CatalogCell: UITableViewCell {
     
-    @IBOutlet weak var cocktailThumb: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var cocktailThumb: UIImageView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var textLbl: UILabel!
     
     var thumbnailUrl: String? {
