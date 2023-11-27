@@ -29,6 +29,23 @@ class CatalogTVC: UITableViewController {
         fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
     }
     
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Catalog", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DrinkDetailVC") as! DrinkDetailVC
+        let drink: Drink?
+        
+        if indexPath.section == 0 {
+            drink = isSearching ? filteredAlcoholicDrinks[indexPath.row] : alcoholicDrinks[indexPath.row]
+        } else {
+            drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
+        }
+        
+        vc.drink = drink
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int { 2 }
@@ -59,7 +76,7 @@ class CatalogTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatalogCell
-        var drink: Drink?
+        let drink: Drink?
         
         if indexPath.section == 0 {
             drink = isSearching ? filteredAlcoholicDrinks[indexPath.row] : alcoholicDrinks[indexPath.row]
@@ -110,16 +127,6 @@ class CatalogTVC: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     // MARK: - Private functions
     
     private func fetchDrinks(url: URL?, drinkType: DrinkType) {
