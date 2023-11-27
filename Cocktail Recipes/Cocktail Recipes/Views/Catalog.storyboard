@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZaA-AC-O8o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIN-Wi-w65">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
@@ -45,12 +45,54 @@
                     </connections>
                 </searchBar>
             </objects>
-            <point key="canvasLocation" x="-161" y="-49"/>
+            <point key="canvasLocation" x="616" y="-49"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Ingredients-->
+        <scene sceneID="hgY-FW-qiw">
+            <objects>
+                <tableViewController id="VX5-Jt-37C" customClass="IngredientsTVC" customModule="Cocktail_Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="QxK-hw-chI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="alS-Mc-o1x">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="alS-Mc-o1x" id="KJD-Bu-xVK">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VX5-Jt-37C" id="RUd-tc-BFw"/>
+                            <outlet property="delegate" destination="VX5-Jt-37C" id="fDG-og-pTR"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="OCF-fB-nH4"/>
+                    <navigationItem key="navigationItem" title="Ingredients" id="t1s-CJ-sHP"/>
+                    <connections>
+                        <outlet property="searchBar" destination="006-t9-c4c" id="o8u-Mg-nsg"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Js5-Uc-kqu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="006-t9-c4c">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="VX5-Jt-37C" id="DfU-QA-eU0"/>
+                    </connections>
+                </searchBar>
+            </objects>
+            <point key="canvasLocation" x="615" y="684"/>
+        </scene>
+        <!--Cocktails-->
         <scene sceneID="zXr-x0-Ctk">
             <objects>
                 <navigationController id="ZaA-AC-O8o" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cocktails" id="c74-uV-6h1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="YGJ-Va-9UT">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -61,7 +103,42 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VOL-go-sjj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-931" y="-49"/>
+            <point key="canvasLocation" x="-147" y="-49"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Pcg-V3-QjC">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="zIN-Wi-w65" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4v2-Yp-Hpw">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ZaA-AC-O8o" kind="relationship" relationship="viewControllers" id="hTA-b0-Krh"/>
+                        <segue destination="RFL-6L-xzx" kind="relationship" relationship="viewControllers" id="9c7-EK-BrL"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="34q-bx-TYT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-932.06106870229007" y="-49.295774647887328"/>
+        </scene>
+        <!--Ingredients-->
+        <scene sceneID="5m7-01-zjg">
+            <objects>
+                <navigationController id="RFL-6L-xzx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Ingredients" id="aRO-F7-WyR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Bdb-PW-GvV">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VX5-Jt-37C" kind="relationship" relationship="rootViewController" id="tQo-gM-Vu2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fut-MZ-fES" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-147" y="684"/>
         </scene>
     </scenes>
     <resources>

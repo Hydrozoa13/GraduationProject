@@ -9,8 +9,9 @@ import Foundation
 
 struct Ingredient: Codable {
     
-    let idIngredient: Int
+    let idIngredient: Int?
     let strIngredient: String?
+    let strIngredient1: String?
     let strDescription: String?
     let strType: String?
     let strAlcohol: String?
