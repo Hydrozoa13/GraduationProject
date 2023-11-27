@@ -37,7 +37,11 @@ class IngredientsTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatalogCell
         var ingredient: Ingredient?
         ingredient = isSearching ? filteredIngredients[indexPath.row] : ingredients[indexPath.row]
-        guard let ingredient else { return cell }
+        
+        guard let ingredient,
+              let ingredientThumb = ingredient.strIngredient1 else { return cell }
+        
+        cell.thumbnailUrl = ApiConstants.ingredientsThumbsPath + "\(ingredientThumb)-Small.png"
         cell.textLbl.text = ingredient.strIngredient1
         return cell
     }

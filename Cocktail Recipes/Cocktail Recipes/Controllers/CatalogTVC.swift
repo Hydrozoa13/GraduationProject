@@ -67,8 +67,10 @@ class CatalogTVC: UITableViewController {
             drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
         }
         
-        guard let drink else { return cell }
-        cell.thumbnailUrl = drink.strDrinkThumb
+        guard let drink,
+              let drinkThumb = drink.strDrinkThumb else { return cell }
+        
+        cell.thumbnailUrl = drinkThumb + "/preview"
         cell.textLbl.text = drink.strDrink
         return cell
     }

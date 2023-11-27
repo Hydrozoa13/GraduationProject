@@ -11,6 +11,8 @@ struct ApiConstants {
     
     static let serverPath = "https://www.thecocktaildb.com/api/json/v1/1/"
     
+    static let ingredientsThumbsPath = "https://www.thecocktaildb.com/images/ingredients/"
+    
     static let alcoholicPath = serverPath + "filter.php?a=Alcoholic"
     static let alcoholicURL = URL(string: alcoholicPath)
     
