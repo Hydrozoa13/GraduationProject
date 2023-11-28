@@ -28,21 +28,18 @@ class IngredientsTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = 0
-        count = isSearching ? filteredIngredients.count : ingredients.count
+        let count = isSearching ? filteredIngredients.count : ingredients.count
         return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatalogCell
-        var ingredient: Ingredient?
-        ingredient = isSearching ? filteredIngredients[indexPath.row] : ingredients[indexPath.row]
+        let ingredient = isSearching ? filteredIngredients[indexPath.row] : ingredients[indexPath.row]
         
-        guard let ingredient,
-              let ingredientThumb = ingredient.strIngredient1 else { return cell }
+        guard let ingredientThumb = ingredient.strIngredient1 else { return cell }
         
         cell.thumbnailUrl = ApiConstants.ingredientsThumbsPath + "\(ingredientThumb)-Small.png"
-        cell.textLbl.text = ingredient.strIngredient1
+        cell.textLbl.text = ingredientThumb
         return cell
     }
 
