@@ -22,6 +22,6 @@ extension IngredientsTVC: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        view.endEditing(true)
+        searchBar.endEditing(true)
     }
 }

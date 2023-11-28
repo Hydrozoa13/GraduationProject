@@ -32,6 +32,7 @@ class CatalogTVC: UITableViewController {
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchBar.endEditing(true)
         let storyboard = UIStoryboard(name: "Catalog", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DrinkDetailVC") as! DrinkDetailVC
         let drink: Drink?
@@ -41,7 +42,7 @@ class CatalogTVC: UITableViewController {
         } else {
             drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
         }
-        
+    
         vc.drinkId = drink?.idDrink
         navigationController?.pushViewController(vc, animated: true)
     }

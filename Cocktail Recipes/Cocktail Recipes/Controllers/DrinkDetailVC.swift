@@ -60,7 +60,6 @@ class DrinkDetailVC: UIViewController {
     private func setupDrinkDetail() {
         strDrink.text = drink?.strDrink
         strInstructions.text = drink?.strInstructions
-        
     }
     
     private func getThumbnailUrl() {
