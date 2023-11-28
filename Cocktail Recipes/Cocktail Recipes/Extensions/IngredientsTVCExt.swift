@@ -1,23 +1,21 @@
 //
-//  CatalogTVCExt.swift
+//  IngredientsTVCExt.swift
 //  Cocktail Recipes
 //
-//  Created by Евгений Лойко on 20.11.23.
+//  Created by Евгений Лойко on 27.11.23.
 //
 
 import UIKit
 
-extension CatalogTVC: UISearchBarDelegate {
+extension IngredientsTVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             let text = searchText.lowercased()
-            filteredAlcoholicDrinks = alcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
-            filteredNonAlcoholicDrinks = nonAlcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
+            filteredIngredients = ingredients.filter({$0.strIngredient1!.lowercased().contains(text)})
             isSearching = true
         } else {
-            filteredAlcoholicDrinks = alcoholicDrinks
-            filteredNonAlcoholicDrinks = nonAlcoholicDrinks
+            filteredIngredients = ingredients
             isSearching = false
         }
         tableView.reloadData()

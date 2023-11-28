@@ -9,45 +9,86 @@ import UIKit
 
 class CatalogTVC: UITableViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     
-    var drinksData: [String:[Drink]] = [:]
-    var drinks: [Drink] = []
-    var filteredDrinks: [Drink] = []
+    private var drinksData = [String:[Drink]]()
+    var alcoholicDrinks = [Drink]()
+    var nonAlcoholicDrinks = [Drink]()
+    var filteredAlcoholicDrinks = [Drink]()
+    var filteredNonAlcoholicDrinks = [Drink]()
     var isSearching = false
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.searchBar.delegate = self
-        fetchDrinks(url: ApiConstants.alcoholicURL)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Cocktails"
+        self.searchBar.delegate = self
         tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
                                  forCellReuseIdentifier: "Cell")
+        navigationItem.titleView = searchBar
+        
+        fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic)
+        fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
     }
     
-    @IBAction func segmentedControl(_ sender: UISegmentedControl) {
-        isSearching = false
-        searchBar.text = ""
-        let index = sender.selectedSegmentIndex
-        let url = index == 0 ? ApiConstants.alcoholicURL : ApiConstants.nonAlcoholicURL
-        fetchDrinks(url: url)
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchBar.endEditing(true)
+        let storyboard = UIStoryboard(name: "Catalog", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DrinkDetailVC") as! DrinkDetailVC
+        let drink: Drink?
+        
+        if indexPath.section == 0 {
+            drink = isSearching ? filteredAlcoholicDrinks[indexPath.row] : alcoholicDrinks[indexPath.row]
+        } else {
+            drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
+        }
+    
+        vc.drinkId = drink?.idDrink
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int { 2 }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var title = ""
+        
+        if section == 0 {
+            title = isSearching && filteredAlcoholicDrinks.isEmpty ? "" : "Alcoholic"
+        } else {
+            title = isSearching && filteredNonAlcoholicDrinks.isEmpty ? "" : "Non Alcoholic"
+        }
+        
+        return title
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = isSearching ? filteredDrinks.count : drinks.count
+        var count = 0
+        
+        if section == 0 {
+            count = isSearching ? filteredAlcoholicDrinks.count : alcoholicDrinks.count
+        } else {
+            count = isSearching ? filteredNonAlcoholicDrinks.count : nonAlcoholicDrinks.count
+        }
+        
         return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CatalogCell
-        let drink = isSearching ? filteredDrinks[indexPath.row] : drinks[indexPath.row]
-        cell.thumbnailUrl = drink.strDrinkThumb
+        let drink: Drink?
+        
+        if indexPath.section == 0 {
+            drink = isSearching ? filteredAlcoholicDrinks[indexPath.row] : alcoholicDrinks[indexPath.row]
+        } else {
+            drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
+        }
+        
+        guard let drink,
+              let drinkThumb = drink.strDrinkThumb else { return cell }
+        
+        cell.thumbnailUrl = drinkThumb + "/preview"
         cell.textLbl.text = drink.strDrink
         return cell
     }
@@ -87,26 +128,19 @@ class CatalogTVC: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     // MARK: - Private functions
     
-    private func fetchDrinks(url: URL?) {
+    private func fetchDrinks(url: URL?, drinkType: DrinkType) {
         guard let url else { return }
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
                 drinksData = try JSONDecoder().decode([String:[Drink]].self, from: data)
                 guard let array = drinksData["drinks"] else { return }
-                drinks = array
+                switch drinkType {
+                    case .alcoholic: alcoholicDrinks = array
+                    case .nonAlcoholic: nonAlcoholicDrinks = array
+                }
             } catch {
                 print(error)
             }

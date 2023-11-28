@@ -11,8 +11,8 @@ import AlamofireImage
 
 class CatalogCell: UITableViewCell {
     
-    @IBOutlet weak var cocktailThumb: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var cocktailThumb: UIImageView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var textLbl: UILabel!
     
     var thumbnailUrl: String? {
@@ -22,8 +22,8 @@ class CatalogCell: UITableViewCell {
     }
     
     private func getThumbnailUrl() {
-        guard let thumbnailUrl = thumbnailUrl else { return }
-        NetworkService.getThumbnail(thumbnailUrl: thumbnailUrl) { [weak self] image, error in
+        guard let thumbnailUrl else { return }
+        NetworkService.getThumbnail(thumbnailUrl: thumbnailUrl) { [weak self] image, _ in
             self?.activityIndicator.stopAnimating()
             self?.cocktailThumb.layer.cornerRadius = 15
             self?.cocktailThumb.image = image
