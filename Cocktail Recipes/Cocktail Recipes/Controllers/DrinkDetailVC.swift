@@ -65,8 +65,10 @@ class DrinkDetailVC: UIViewController {
     private func getThumbnailUrl() {
         guard let thumbnailUrl = drink?.strDrinkThumb else { return }
         NetworkService.getThumbnail(thumbnailUrl: thumbnailUrl) { [weak self] image, error in
-            self?.activityIndicator.stopAnimating()
-            self?.imageView.image = image
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.imageView.image = image
+            }
         }
     }
 }
