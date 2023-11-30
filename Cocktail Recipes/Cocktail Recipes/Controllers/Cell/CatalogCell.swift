@@ -22,11 +22,14 @@ class CatalogCell: UITableViewCell {
     }
     
     private func getThumbnailUrl() {
-        guard let thumbnailUrl else { return }
-        NetworkService.getThumbnail(thumbnailUrl: thumbnailUrl) { [weak self] image, _ in
-            self?.activityIndicator.stopAnimating()
-            self?.cocktailThumb.layer.cornerRadius = 15
-            self?.cocktailThumb.image = image
+        if let url = thumbnailUrl {
+            NetworkService.getThumbnail(thumbnailUrl: url) { [weak self] image, _ in
+                if url == self?.thumbnailUrl {
+                    self?.cocktailThumb.layer.cornerRadius = 15
+                    self?.cocktailThumb.image = image
+                    self?.activityIndicator.stopAnimating()
+                }
+            }
         }
     }
 }
