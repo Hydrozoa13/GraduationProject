@@ -389,22 +389,22 @@
                         <outlet property="activityIndicator" destination="OJg-6i-LX6" id="QRU-vZ-R2d"/>
                         <outlet property="imageView" destination="HgL-xq-xpF" id="uro-7i-QTy"/>
                         <outlet property="strDrink" destination="Nsj-In-NC9" id="sOB-9C-bPc"/>
-                        <outlet property="strIngredient1" destination="Ssi-Ym-bQf" id="EFW-95-20k"/>
-                        <outlet property="strIngredient10" destination="Ci7-b9-5Ac" id="cGE-M0-83x"/>
-                        <outlet property="strIngredient11" destination="Miq-ps-gfF" id="Zc4-RK-MpD"/>
-                        <outlet property="strIngredient12" destination="bdZ-La-x2j" id="4SH-2J-z3N"/>
-                        <outlet property="strIngredient13" destination="4qE-Sc-9cU" id="H4y-82-ahB"/>
-                        <outlet property="strIngredient14" destination="bzw-TF-9Xq" id="jMP-sI-RL0"/>
-                        <outlet property="strIngredient15" destination="pi1-Sc-vK5" id="Z4D-q9-Uos"/>
-                        <outlet property="strIngredient2" destination="PNa-JV-0xQ" id="vIK-3V-X5Y"/>
-                        <outlet property="strIngredient3" destination="cIH-ek-VDg" id="cYU-YN-iaX"/>
-                        <outlet property="strIngredient4" destination="7pF-jH-Vlw" id="O1p-nS-tlK"/>
-                        <outlet property="strIngredient5" destination="Nz9-s7-A7g" id="ild-Nd-ZZd"/>
-                        <outlet property="strIngredient6" destination="re2-Sb-YLy" id="7lR-lR-E3c"/>
-                        <outlet property="strIngredient7" destination="mWR-hv-peJ" id="hhQ-JX-Hki"/>
-                        <outlet property="strIngredient8" destination="6ta-Rd-mJa" id="bBC-RC-N3r"/>
-                        <outlet property="strIngredient9" destination="eNu-T9-Ir1" id="Zk2-67-Rz2"/>
                         <outlet property="strInstructions" destination="H25-lT-vfX" id="a6A-bK-4hX"/>
+                        <outletCollection property="ingredientsLbls" destination="Ssi-Ym-bQf" collectionClass="NSMutableArray" id="FNl-Us-vL6"/>
+                        <outletCollection property="ingredientsLbls" destination="PNa-JV-0xQ" collectionClass="NSMutableArray" id="bXC-pA-ewc"/>
+                        <outletCollection property="ingredientsLbls" destination="cIH-ek-VDg" collectionClass="NSMutableArray" id="2UX-z1-d3w"/>
+                        <outletCollection property="ingredientsLbls" destination="7pF-jH-Vlw" collectionClass="NSMutableArray" id="og6-bF-D5W"/>
+                        <outletCollection property="ingredientsLbls" destination="Nz9-s7-A7g" collectionClass="NSMutableArray" id="vJ7-ce-1qb"/>
+                        <outletCollection property="ingredientsLbls" destination="re2-Sb-YLy" collectionClass="NSMutableArray" id="g7c-Sm-sjV"/>
+                        <outletCollection property="ingredientsLbls" destination="mWR-hv-peJ" collectionClass="NSMutableArray" id="re9-dm-MbK"/>
+                        <outletCollection property="ingredientsLbls" destination="6ta-Rd-mJa" collectionClass="NSMutableArray" id="LbY-Uz-RwF"/>
+                        <outletCollection property="ingredientsLbls" destination="eNu-T9-Ir1" collectionClass="NSMutableArray" id="f47-Nd-naO"/>
+                        <outletCollection property="ingredientsLbls" destination="Ci7-b9-5Ac" collectionClass="NSMutableArray" id="L2Z-Il-hzg"/>
+                        <outletCollection property="ingredientsLbls" destination="Miq-ps-gfF" collectionClass="NSMutableArray" id="YYT-jq-JG5"/>
+                        <outletCollection property="ingredientsLbls" destination="bdZ-La-x2j" collectionClass="NSMutableArray" id="X9T-Hg-DnP"/>
+                        <outletCollection property="ingredientsLbls" destination="4qE-Sc-9cU" collectionClass="NSMutableArray" id="cuB-1Y-6Gy"/>
+                        <outletCollection property="ingredientsLbls" destination="bzw-TF-9Xq" collectionClass="NSMutableArray" id="nBo-qy-tpC"/>
+                        <outletCollection property="ingredientsLbls" destination="pi1-Sc-vK5" collectionClass="NSMutableArray" id="eBJ-Gm-zmw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lmh-s0-hAw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
