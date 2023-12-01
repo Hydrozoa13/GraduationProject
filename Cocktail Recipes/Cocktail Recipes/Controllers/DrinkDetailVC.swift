@@ -13,6 +13,7 @@ class DrinkDetailVC: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var strDrink: UILabel!
     @IBOutlet private var ingredientsLbls: [UILabel]!
+    @IBOutlet private var measuresLbls: [UILabel]!
     @IBOutlet private weak var strInstructions: UILabel!
     
     var drink: Drink? { didSet { getThumbnailUrl() } }
@@ -59,6 +60,7 @@ class DrinkDetailVC: UIViewController {
     }
     
     private func setupDrinkDetail() {
+        
         ingredientsLbls.forEach { ingredientLbl in
             guard let text = ingredientLbl.text else { return }
             switch text {
@@ -80,6 +82,29 @@ class DrinkDetailVC: UIViewController {
             default: break
             }
             ingredientLbl.isHidden = ingredientLbl.text != nil ? false : true
+        }
+        
+        measuresLbls.forEach { measureLbl in
+            guard let text = measureLbl.text else { return }
+            switch text {
+                case "strMeasure1": measureLbl.text = updatedDrink?.strMeasure1
+                case "strMeasure2": measureLbl.text = updatedDrink?.strMeasure2
+                case "strMeasure3": measureLbl.text = updatedDrink?.strMeasure3
+                case "strMeasure4": measureLbl.text = updatedDrink?.strMeasure4
+                case "strMeasure5": measureLbl.text = updatedDrink?.strMeasure5
+                case "strMeasure6": measureLbl.text = updatedDrink?.strMeasure6
+                case "strMeasure7": measureLbl.text = updatedDrink?.strMeasure7
+                case "strMeasure8": measureLbl.text = updatedDrink?.strMeasure8
+                case "strMeasure9": measureLbl.text = updatedDrink?.strMeasure9
+                case "strMeasure10": measureLbl.text = updatedDrink?.strMeasure10
+                case "strMeasure11": measureLbl.text = updatedDrink?.strMeasure11
+                case "strMeasure12": measureLbl.text = updatedDrink?.strMeasure12
+                case "strMeasure13": measureLbl.text = updatedDrink?.strMeasure13
+                case "strMeasure14": measureLbl.text = updatedDrink?.strMeasure14
+                case "strMeasure15": measureLbl.text = updatedDrink?.strMeasure15
+            default: break
+            }
+            measureLbl.isHidden = measureLbl.text != nil ? false : true
         }
         
         strInstructions.text = updatedDrink?.strInstructions
