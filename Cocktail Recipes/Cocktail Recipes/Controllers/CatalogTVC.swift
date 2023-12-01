@@ -43,7 +43,7 @@ class CatalogTVC: UITableViewController {
             drink = isSearching ? filteredNonAlcoholicDrinks[indexPath.row] : nonAlcoholicDrinks[indexPath.row]
         }
     
-        vc.drinkId = drink?.idDrink
+        vc.drink = drink
         navigationController?.pushViewController(vc, animated: true)
     }
     

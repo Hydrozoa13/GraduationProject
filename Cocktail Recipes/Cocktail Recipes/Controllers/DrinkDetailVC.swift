@@ -14,19 +14,15 @@ class DrinkDetailVC: UIViewController {
     @IBOutlet private weak var strDrink: UILabel!
     @IBOutlet private weak var strInstructions: UILabel!
     
-    var drinkId: String?
+    var drink: Drink? { didSet { getThumbnailUrl() } }
     private var drinkData = [String:[Drink]]()
-    private var drink: Drink? {
-        didSet {
-            getThumbnailUrl()
-        }
-    }
+    private var updatedDrink: Drink?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchDrinkDetails(drinkId: drinkId)
+        setupUI()
+        fetchDrinkDetails(drinkId: drink?.idDrink)
     }
-    
 
     /*
     // MARK: - Navigation
@@ -47,7 +43,7 @@ class DrinkDetailVC: UIViewController {
             guard let self, let data else { return }
             do {
                 drinkData = try JSONDecoder().decode([String:[Drink]].self, from: data)
-                drink = drinkData["drinks"]?.first
+                updatedDrink = drinkData["drinks"]?.first
             } catch {
                 print(error)
             }
@@ -57,9 +53,10 @@ class DrinkDetailVC: UIViewController {
         }.resume()
     }
     
+    private func setupUI() { strDrink.text = drink?.strDrink }
+    
     private func setupDrinkDetail() {
-        strDrink.text = drink?.strDrink
-        strInstructions.text = drink?.strInstructions
+        strInstructions.text = updatedDrink?.strInstructions
     }
     
     private func getThumbnailUrl() {
