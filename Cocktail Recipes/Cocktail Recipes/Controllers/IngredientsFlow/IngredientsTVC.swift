@@ -24,6 +24,17 @@ class IngredientsTVC: UITableViewController {
         navigationItem.titleView = searchBar
         fetchIngredients(url: ApiConstants.ingredientsListURL)
     }
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchBar.endEditing(true)
+        let storyboard = UIStoryboard(name: "Catalog", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "IngredientDetailVC") as! IngredientDetailVC
+        let ingredient = isSearching ? filteredIngredients[indexPath.row] : ingredients[indexPath.row]
+        vc.ingredient = ingredient
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     // MARK: - Table view data source
 

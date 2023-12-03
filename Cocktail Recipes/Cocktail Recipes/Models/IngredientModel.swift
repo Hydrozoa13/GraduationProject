@@ -9,7 +9,7 @@ import Foundation
 
 struct Ingredient: Codable {
     
-    let idIngredient: Int?
+    let idIngredient: String?
     let strIngredient: String?
     let strIngredient1: String?
     let strDescription: String?

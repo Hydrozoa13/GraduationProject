@@ -27,6 +27,7 @@
 		D1D05A122B14A42600135D53 /* IngredientsTVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */; };
 		D1D05A182B14EFAB00135D53 /* DrinkDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A172B14EFAB00135D53 /* DrinkDetailVC.swift */; };
 		D1D05A1A2B15DB1200135D53 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A192B15DB1200135D53 /* CacheService.swift */; };
+		D1FFC6D32B1CEF4600AD22AE /* IngredientDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FFC6D22B1CEF4600AD22AE /* IngredientDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTVCExt.swift; sourceTree = "<group>"; };
 		D1D05A172B14EFAB00135D53 /* DrinkDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailVC.swift; sourceTree = "<group>"; };
 		D1D05A192B15DB1200135D53 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		D1FFC6D22B1CEF4600AD22AE /* IngredientDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,9 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				D19C1D542B0BB7C400B6AD6A /* Cell */,
-				D17D79AB2AFFC1820063851D /* CatalogTVC.swift */,
-				D1D05A172B14EFAB00135D53 /* DrinkDetailVC.swift */,
-				D1D05A0F2B14A1DA00135D53 /* IngredientsTVC.swift */,
+				D1FFC6D02B1CEEEE00AD22AE /* DrinksFlow */,
+				D1FFC6D12B1CEF0000AD22AE /* IngredientsFlow */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -168,6 +169,24 @@
 				D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D1FFC6D02B1CEEEE00AD22AE /* DrinksFlow */ = {
+			isa = PBXGroup;
+			children = (
+				D17D79AB2AFFC1820063851D /* CatalogTVC.swift */,
+				D1D05A172B14EFAB00135D53 /* DrinkDetailVC.swift */,
+			);
+			path = DrinksFlow;
+			sourceTree = "<group>";
+		};
+		D1FFC6D12B1CEF0000AD22AE /* IngredientsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				D1D05A0F2B14A1DA00135D53 /* IngredientsTVC.swift */,
+				D1FFC6D22B1CEF4600AD22AE /* IngredientDetailVC.swift */,
+			);
+			path = IngredientsFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +279,7 @@
 				D19C1D642B0BEB0900B6AD6A /* CatalogTVCExt.swift in Sources */,
 				D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */,
 				D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */,
+				D1FFC6D32B1CEF4600AD22AE /* IngredientDetailVC.swift in Sources */,
 				D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */,
 				D1D05A102B14A1DA00135D53 /* IngredientsTVC.swift in Sources */,
 				D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */,
