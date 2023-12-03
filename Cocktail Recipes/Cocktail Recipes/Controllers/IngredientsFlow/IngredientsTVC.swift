@@ -33,7 +33,7 @@ class IngredientsTVC: UITableViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "IngredientDetailVC") as! IngredientDetailVC
         let ingredient = isSearching ? filteredIngredients[indexPath.row] : ingredients[indexPath.row]
         vc.ingredient = ingredient
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.present(vc, animated: true)
     }
 
     // MARK: - Table view data source

@@ -29,6 +29,18 @@ class CatalogTVC: UITableViewController {
         fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Cocktails"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.title = ""
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -53,27 +53,33 @@ class DrinkDetailVC: UIViewController {
         ingredientsLbls.forEach { ingredientLbl in
             guard let text = ingredientLbl.text else { return }
             switch text {
-                case "1": ingredientLbl.text = (updatedDrink?.strMeasure1 ?? "") + (updatedDrink?.strIngredient1 ?? "")
-                case "2": ingredientLbl.text = (updatedDrink?.strMeasure2 ?? "") + (updatedDrink?.strIngredient2 ?? "")
-                case "3": ingredientLbl.text = (updatedDrink?.strMeasure3 ?? "") + (updatedDrink?.strIngredient3 ?? "")
-                case "4": ingredientLbl.text = (updatedDrink?.strMeasure4 ?? "") + (updatedDrink?.strIngredient4 ?? "")
-                case "5": ingredientLbl.text = (updatedDrink?.strMeasure5 ?? "") + (updatedDrink?.strIngredient5 ?? "")
-                case "6": ingredientLbl.text = (updatedDrink?.strMeasure6 ?? "") + (updatedDrink?.strIngredient6 ?? "")
-                case "7": ingredientLbl.text = (updatedDrink?.strMeasure7 ?? "") + (updatedDrink?.strIngredient7 ?? "")
-                case "8": ingredientLbl.text = (updatedDrink?.strMeasure8 ?? "") + (updatedDrink?.strIngredient8 ?? "")
-                case "9": ingredientLbl.text = (updatedDrink?.strMeasure9 ?? "") + (updatedDrink?.strIngredient9 ?? "")
-                case "10": ingredientLbl.text = (updatedDrink?.strMeasure10 ?? "") + (updatedDrink?.strIngredient10 ?? "")
-                case "11": ingredientLbl.text = (updatedDrink?.strMeasure11 ?? "") + (updatedDrink?.strIngredient11 ?? "")
-                case "12": ingredientLbl.text = (updatedDrink?.strMeasure12 ?? "") + (updatedDrink?.strIngredient12 ?? "")
-                case "13": ingredientLbl.text = (updatedDrink?.strMeasure13 ?? "") + (updatedDrink?.strIngredient13 ?? "")
-                case "14": ingredientLbl.text = (updatedDrink?.strMeasure14 ?? "") + (updatedDrink?.strIngredient14 ?? "")
-                case "15": ingredientLbl.text = (updatedDrink?.strMeasure15 ?? "") + (updatedDrink?.strIngredient15 ?? "")
-            default: break
+                case "1": ingredientLbl.text = "Ingredients you need:\n\n" + "✧ " +
+                                               (updatedDrink?.strMeasure1 ?? "") +
+                                               (updatedDrink?.strIngredient1 ?? "")
+                case "2": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure2 ?? "") + (updatedDrink?.strIngredient2 ?? "")
+                case "3": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure3 ?? "") + (updatedDrink?.strIngredient3 ?? "")
+                case "4": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure4 ?? "") + (updatedDrink?.strIngredient4 ?? "")
+                case "5": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure5 ?? "") + (updatedDrink?.strIngredient5 ?? "")
+                case "6": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure6 ?? "") + (updatedDrink?.strIngredient6 ?? "")
+                case "7": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure7 ?? "") + (updatedDrink?.strIngredient7 ?? "")
+                case "8": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure8 ?? "") + (updatedDrink?.strIngredient8 ?? "")
+                case "9": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure9 ?? "") + (updatedDrink?.strIngredient9 ?? "")
+                case "10": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure10 ?? "") + (updatedDrink?.strIngredient10 ?? "")
+                case "11": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure11 ?? "") + (updatedDrink?.strIngredient11 ?? "")
+                case "12": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure12 ?? "") + (updatedDrink?.strIngredient12 ?? "")
+                case "13": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure13 ?? "") + (updatedDrink?.strIngredient13 ?? "")
+                case "14": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure14 ?? "") + (updatedDrink?.strIngredient14 ?? "")
+                case "15": ingredientLbl.text = "✧ " + (updatedDrink?.strMeasure15 ?? "") + (updatedDrink?.strIngredient15 ?? "")
+                default: break
             }
+            
+            ingredientLbl.text = (ingredientLbl.text == "✧ ") ? "" : ingredientLbl.text
+            
             ingredientLbl.isHidden = ingredientLbl.text != "" ? false : true
         }
         
-        strInstructions.text = updatedDrink?.strInstructions
+        strInstructions.text = updatedDrink?.strInstructions != nil ?
+            "How to make:\n\n\(updatedDrink?.strInstructions ?? "")" : ""
     }
     
     private func getThumbnailUrl() {

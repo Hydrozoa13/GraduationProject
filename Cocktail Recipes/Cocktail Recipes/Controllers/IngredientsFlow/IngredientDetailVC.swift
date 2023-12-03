@@ -56,18 +56,16 @@ class IngredientDetailVC: UIViewController {
                 case "strType": detailLbl.text = "Type: \(updatedIngredient?.strType ?? "unknown")"
                 case "strAlcohol": detailLbl.text = "Alcohol: \(updatedIngredient?.strAlcohol ?? "unknown")"
                 case "strABV": detailLbl.text = "ABV: \(updatedIngredient?.strABV ?? "unknown")"
-            default: break
+                default: break
             }
             
-            if let updatedText = detailLbl.text {
-                switch updatedText {
-                    case "Type: unknown": detailLbl.text = ""
-                    case "Alcohol: unknown": detailLbl.text = ""
-                    case "ABV: unknown": detailLbl.text = ""
-                    case "Alcohol: No": detailLbl.text = ""
-                    case "ABV: 0": detailLbl.text = ""
+            switch detailLbl.text {
+                case "Type: unknown": detailLbl.text = ""
+                case "Alcohol: unknown": detailLbl.text = ""
+                case "ABV: unknown": detailLbl.text = ""
+                case "Alcohol: No": detailLbl.text = ""
+                case "ABV: 0": detailLbl.text = ""
                 default: break
-                }
             }
             
             detailLbl.isHidden = detailLbl.text != "" ? false : true
