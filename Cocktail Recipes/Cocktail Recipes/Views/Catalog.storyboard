@@ -453,6 +453,31 @@
             </objects>
             <point key="canvasLocation" x="1381" y="684"/>
         </scene>
+        <!--CocktailsCVC-->
+        <scene sceneID="wlY-MA-bNl">
+            <objects>
+                <collectionViewController storyboardIdentifier="CocktailsCVC" id="IYl-uP-nqf" customClass="CocktailsCVC" customModule="Cocktail_Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lGL-V3-h3o">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0jl-eb-xp4">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="IYl-uP-nqf" id="jwp-5c-tx5"/>
+                            <outlet property="delegate" destination="IYl-uP-nqf" id="Sv6-tI-1NM"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yaG-f9-vf6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="615" y="1344"/>
+        </scene>
     </scenes>
     <resources>
         <image name="default-image" width="1000" height="1000"/>
