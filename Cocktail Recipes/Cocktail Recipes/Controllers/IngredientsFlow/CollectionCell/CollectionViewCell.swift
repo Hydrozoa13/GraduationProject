@@ -9,8 +9,8 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     var thumbnailUrl: String? {
         didSet {
@@ -19,10 +19,14 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     private func getThumbnailUrl() {
-        guard let thumbnailUrl = thumbnailUrl else { return }
-        NetworkService.getThumbnail(thumbnailUrl: thumbnailUrl) { [weak self] image, error in
-            self?.activityIndicator.stopAnimating()
-            self?.imageView.image = image
+        if let url = thumbnailUrl {
+            NetworkService.getThumbnail(thumbnailUrl: url) { [weak self] image, _ in
+                if url == self?.thumbnailUrl {
+                    self?.imageView.layer.cornerRadius = 15
+                    self?.imageView.image = image
+                    self?.activityIndicator.stopAnimating()
+                }
+            }
         }
     }
 }

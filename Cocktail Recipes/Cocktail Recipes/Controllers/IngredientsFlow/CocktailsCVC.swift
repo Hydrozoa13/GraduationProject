@@ -9,17 +9,20 @@ import UIKit
 
 class CocktailsCVC: UICollectionViewController {
     
-    var strIngredient: String?
+    var ingredient: Ingredient?
+    private var cocktailsData = [String:[Drink]]()
+    private var cocktails = [Drink]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+        fetchCocktails(strIngredient: ingredient?.strIngredient1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let layout = UICollectionViewFlowLayout()
-        let sizeWH = UIScreen.main.bounds.width / 2 - 5
+        let sizeWH = UIScreen.main.bounds.width / 2 - 5 
         layout.itemSize = CGSize(width: sizeWH, height: sizeWH)
         collectionView.collectionViewLayout = layout
     }
@@ -34,27 +37,20 @@ class CocktailsCVC: UICollectionViewController {
     }
     */
 
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
+    // MARK: - UICollectionViewDataSource
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        cocktails.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-    
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
+        let cocktail = cocktails[indexPath.row]
+        cell.thumbnailUrl = cocktail.strDrinkThumb
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -84,5 +80,24 @@ class CocktailsCVC: UICollectionViewController {
     
     }
     */
+    
+    //MARK: - Private functions
 
+    private func fetchCocktails(strIngredient: String?) {
+        guard let strIngredient,
+              let url = URL(string: ApiConstants.cocktailsPath + strIngredient) else { return }
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
+            guard let self, let data else { return }
+            do {
+                cocktailsData = try JSONDecoder().decode([String:[Drink]].self, from: data)
+                guard let array = cocktailsData["drinks"] else { return }
+                cocktails = array
+            } catch {
+                print(error)
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }.resume()
+    }
 }
