@@ -11,6 +11,7 @@ class CollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var label: UILabel!
     
     var thumbnailUrl: String? {
         didSet {

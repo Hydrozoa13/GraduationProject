@@ -46,6 +46,7 @@ class CocktailsCVC: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         let cocktail = cocktails[indexPath.row]
         cell.thumbnailUrl = cocktail.strDrinkThumb
+        cell.label.text = cocktail.strDrink
         return cell
     }
 
