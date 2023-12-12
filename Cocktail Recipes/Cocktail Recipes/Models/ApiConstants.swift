@@ -23,4 +23,8 @@ struct ApiConstants {
     static let ingredientsListURL = URL(string: ingredientsListPath)
     
     static let drinkDetailPath = serverPath + "lookup.php?i="
+    
+    static let ingredientDetailPath = serverPath + "search.php?i="
+    
+    static let cocktailsPath = serverPath + "filter.php?i="
 }
