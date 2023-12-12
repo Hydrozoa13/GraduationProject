@@ -17,14 +17,13 @@ class CocktailsCVC: UICollectionViewController {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         fetchCocktails(strIngredient: ingredient?.strIngredient1)
+        navigationItem.prompt = ingredient?.strIngredient1
+        navigationItem.title = "You can make:"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let layout = UICollectionViewFlowLayout()
-        let sizeWH = UIScreen.main.bounds.width / 2 - 5 
-        layout.itemSize = CGSize(width: sizeWH, height: sizeWH)
-        collectionView.collectionViewLayout = layout
+        setImageSize()
     }
 
     /*
@@ -99,5 +98,12 @@ class CocktailsCVC: UICollectionViewController {
                 self.collectionView.reloadData()
             }
         }.resume()
+    }
+    
+    private func setImageSize() {
+        let layout = UICollectionViewFlowLayout()
+        let sizeWH = UIScreen.main.bounds.width / 2 - 5
+        layout.itemSize = CGSize(width: sizeWH, height: sizeWH)
+        collectionView.collectionViewLayout = layout
     }
 }
