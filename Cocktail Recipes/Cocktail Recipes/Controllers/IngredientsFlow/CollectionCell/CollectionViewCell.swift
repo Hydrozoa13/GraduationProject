@@ -15,6 +15,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     var thumbnailUrl: String? {
         didSet {
+            imageView.image = nil
             getThumbnailUrl()
         }
     }
