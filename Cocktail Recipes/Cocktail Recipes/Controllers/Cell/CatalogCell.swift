@@ -17,6 +17,7 @@ class CatalogCell: UITableViewCell {
     
     var thumbnailUrl: String? {
         didSet {
+            cocktailThumb.image = nil
             getThumbnailUrl()
         }
     }
