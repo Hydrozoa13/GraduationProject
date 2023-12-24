@@ -12,7 +12,6 @@
 		D17D798D2AFF9AAF0063851D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17D798C2AFF9AAF0063851D /* Assets.xcassets */; };
 		D17D79902AFF9AAF0063851D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17D798E2AFF9AAF0063851D /* LaunchScreen.storyboard */; };
 		D17D799F2AFFA1F00063851D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D17D799E2AFFA1F00063851D /* Alamofire */; };
-		D17D79A22AFFA2920063851D /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D17D79A12AFFA2920063851D /* SwiftyJSON */; };
 		D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A32AFFA2CE0063851D /* ApiConstants.swift */; };
 		D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A52AFFA3AA0063851D /* DrinkModel.swift */; };
 		D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A72AFFA6B80063851D /* IngredientModel.swift */; };
@@ -64,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D17D79A22AFFA2920063851D /* SwiftyJSON in Frameworks */,
 				D17D799F2AFFA1F00063851D /* Alamofire in Frameworks */,
 				D19C1D5B2B0BBB9800B6AD6A /* AlamofireImage in Frameworks */,
 			);
@@ -224,7 +222,6 @@
 			name = "Cocktail Recipes";
 			packageProductDependencies = (
 				D17D799E2AFFA1F00063851D /* Alamofire */,
-				D17D79A12AFFA2920063851D /* SwiftyJSON */,
 				D19C1D5A2B0BBB9800B6AD6A /* AlamofireImage */,
 			);
 			productName = "Cocktail Recipes";
@@ -257,7 +254,6 @@
 			mainGroup = D17D79772AFF9AAD0063851D;
 			packageReferences = (
 				D17D799D2AFFA1F00063851D /* XCRemoteSwiftPackageReference "Alamofire" */,
-				D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				D19C1D592B0BBB9800B6AD6A /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = D17D79812AFF9AAD0063851D /* Products */;
@@ -541,14 +537,6 @@
 				minimumVersion = 5.8.1;
 			};
 		};
-		D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
 		D19C1D592B0BBB9800B6AD6A /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
@@ -564,11 +552,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D17D799D2AFFA1F00063851D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		D17D79A12AFFA2920063851D /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
 		};
 		D19C1D5A2B0BBB9800B6AD6A /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;

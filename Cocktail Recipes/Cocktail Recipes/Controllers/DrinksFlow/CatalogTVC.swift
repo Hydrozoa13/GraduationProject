@@ -20,11 +20,7 @@ class CatalogTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchBar.delegate = self
-        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
-                                 forCellReuseIdentifier: "Cell")
-        navigationItem.titleView = searchBar
-        
+        setupUI()
         fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic)
         fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
     }
@@ -57,6 +53,12 @@ class CatalogTVC: UITableViewController {
     
         vc.drink = drink
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+               headerView.textLabel?.textColor = .lightGray
+        }
     }
     
     // MARK: - Table view data source
@@ -106,6 +108,21 @@ class CatalogTVC: UITableViewController {
     }
 
     // MARK: - Private functions
+    
+    private func setupUI() {
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+        searchBar.searchTextField.textColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
+        searchBar.tintColor = .lightGray
+        searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "Find a cocktail",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        )
+        searchBar.searchTextField.leftView?.tintColor = .lightGray
+        
+        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
+                                 forCellReuseIdentifier: "Cell")
+    }
     
     private func fetchDrinks(url: URL?, drinkType: DrinkType) {
         guard let url else { return }
