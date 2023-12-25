@@ -25,6 +25,18 @@ class IngredientsTVC: UITableViewController {
         setLongPressRecognizer()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Ingredients"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.title = ""
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -61,11 +73,6 @@ class IngredientsTVC: UITableViewController {
         tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
                                  forCellReuseIdentifier: "Cell")
     }
-    
-    private func setLongPressRecognizer() {
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
-        tableView.addGestureRecognizer(longPressRecognizer)
-    }
 
     private func fetchIngredients(url: URL?) {
         guard let url else { return }
@@ -82,17 +89,5 @@ class IngredientsTVC: UITableViewController {
                 self.tableView.reloadData()
             }
         }.resume()
-    }
-    
-    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
-            let touchPoint = longPressGestureRecognizer.location(in: self.view)
-            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                let vc = storyboard?.instantiateViewController(withIdentifier: "CocktailsCVC") as! CocktailsCVC
-                let ingredient = isSearching ? filteredIngredients[indexPath.row] : ingredients[indexPath.row]
-                vc.ingredient = ingredient
-                navigationController?.pushViewController(vc, animated: true)
-            }
-        }
     }
 }
