@@ -45,6 +45,7 @@ class DrinkDetailVC: UIViewController {
     }
     
     private func setupUI() {
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
         strDrink.text = drink?.strDrink
     }
     

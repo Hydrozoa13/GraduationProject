@@ -15,10 +15,8 @@ class CocktailsCVC: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+        setupUI()
         fetchCocktails(strIngredient: ingredient?.strIngredient1)
-        navigationItem.prompt = ingredient?.strIngredient1
-        navigationItem.title = "You can make:"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +49,13 @@ class CocktailsCVC: UICollectionViewController {
     }
     
     //MARK: - Private functions
+    
+    private func setupUI() {
+        collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
+        navigationItem.prompt = ingredient?.strIngredient1
+        navigationItem.title = "You can make:"
+    }
 
     private func fetchCocktails(strIngredient: String?) {
         guard let strIngredient,
