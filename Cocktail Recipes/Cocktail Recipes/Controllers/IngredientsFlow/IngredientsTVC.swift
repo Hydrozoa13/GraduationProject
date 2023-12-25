@@ -18,15 +18,11 @@ class IngredientsTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchBar.delegate = self
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
-        tableView.addGestureRecognizer(longPressRecognizer)
-        
-        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
-                                 forCellReuseIdentifier: "Cell")
-        navigationItem.titleView = searchBar
+        searchBar.delegate = self
+        searchBar.setSearchBarUI(with: "Find an ingredient")
+        setupUI()
         fetchIngredients(url: ApiConstants.ingredientsListURL)
+        setLongPressRecognizer()
     }
     
     // MARK: - Table view delegate
@@ -59,6 +55,17 @@ class IngredientsTVC: UITableViewController {
     }
     
     //MARK: - Private functions
+    
+    private func setupUI() {
+        navigationItem.titleView = searchBar
+        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
+                                 forCellReuseIdentifier: "Cell")
+    }
+    
+    private func setLongPressRecognizer() {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
+        tableView.addGestureRecognizer(longPressRecognizer)
+    }
 
     private func fetchIngredients(url: URL?) {
         guard let url else { return }
@@ -89,5 +96,3 @@ class IngredientsTVC: UITableViewController {
         }
     }
 }
-
-

@@ -20,6 +20,8 @@ class CatalogTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
+        searchBar.setSearchBarUI(with: "Find a cocktail")
         setupUI()
         fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic)
         fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
@@ -110,16 +112,7 @@ class CatalogTVC: UITableViewController {
     // MARK: - Private functions
     
     private func setupUI() {
-        searchBar.delegate = self
         navigationItem.titleView = searchBar
-        searchBar.searchTextField.textColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
-        searchBar.tintColor = .lightGray
-        searchBar.searchTextField.attributedPlaceholder = NSAttributedString(
-            string: "Find a cocktail",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
-        )
-        searchBar.searchTextField.leftView?.tintColor = .lightGray
-        
         tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
                                  forCellReuseIdentifier: "Cell")
     }

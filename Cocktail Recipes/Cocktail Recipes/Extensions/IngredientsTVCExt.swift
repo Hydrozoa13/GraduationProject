@@ -9,6 +9,14 @@ import UIKit
 
 extension IngredientsTVC: UISearchBarDelegate {
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if let clearButton = searchBar.searchTextField.value(forKey: "_clearButton") as? UIButton {
+            let img = clearButton.image(for: .normal)
+            let tintedClearImage = img?.withTintColor(.lightGray)
+            clearButton.setImage(tintedClearImage, for: .normal)
+        }
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             let text = searchText.lowercased()
