@@ -17,5 +17,6 @@ extension UISearchBar {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
         self.searchTextField.leftView?.tintColor = .lightGray
+        self.keyboardAppearance = .dark
     }
 }
