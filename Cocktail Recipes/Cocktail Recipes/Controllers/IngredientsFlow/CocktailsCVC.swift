@@ -53,8 +53,8 @@ class CocktailsCVC: UICollectionViewController {
     private func setupUI() {
         collectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
-        navigationItem.prompt = ingredient?.strIngredient1
         navigationItem.title = "You can make:"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(cgColor: #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1))]
     }
 
     private func fetchCocktails(strIngredient: String?) {
