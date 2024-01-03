@@ -18,9 +18,14 @@ extension IngredientsTVC: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let text = searchText.lowercased()
-        filteredIngredients = ingredients.filter({$0.strIngredient1!.lowercased().contains(text)})
-        isSearching = !searchText.isEmpty ? true : false
+        if !searchText.isEmpty {
+            let text = searchText.lowercased()
+            filteredIngredients = ingredients.filter({$0.strIngredient1!.lowercased().contains(text)})
+            isSearching = true
+        } else {
+            filteredIngredients = ingredients
+            isSearching = false
+        }
         tableView.reloadData()
     }
     
