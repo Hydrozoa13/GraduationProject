@@ -19,6 +19,7 @@ extension CatalogTVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.view.viewWithTag(100)?.removeFromSuperview()
+        self.view.viewWithTag(101)?.removeFromSuperview()
         
         let text = searchText.lowercased()
         filteredAlcoholicDrinks = alcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})

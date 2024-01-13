@@ -19,6 +19,7 @@ extension IngredientsTVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.view.viewWithTag(100)?.removeFromSuperview()
+        self.view.viewWithTag(101)?.removeFromSuperview()
         
         let text = searchText.lowercased()
         filteredIngredients = ingredients.filter({$0.strIngredient1!.lowercased().contains(text)})
