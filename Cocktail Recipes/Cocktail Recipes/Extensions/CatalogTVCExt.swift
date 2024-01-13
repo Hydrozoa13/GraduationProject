@@ -18,9 +18,16 @@ extension CatalogTVC: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.view.viewWithTag(100)?.removeFromSuperview()
+        
         let text = searchText.lowercased()
         filteredAlcoholicDrinks = alcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
         filteredNonAlcoholicDrinks = nonAlcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
+        
+        if !text.isEmpty, filteredAlcoholicDrinks.isEmpty, filteredNonAlcoholicDrinks.isEmpty {
+            searchBar.makeEmptyResultsLabel(with: searchText, for: self.view)
+        }
+        
         isSearching = !searchText.isEmpty ? true : false
         tableView.reloadData()
     }
