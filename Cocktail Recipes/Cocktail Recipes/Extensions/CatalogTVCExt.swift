@@ -26,7 +26,10 @@ extension CatalogTVC: UISearchBarDelegate {
         filteredNonAlcoholicDrinks = nonAlcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
         
         if !text.isEmpty, filteredAlcoholicDrinks.isEmpty, filteredNonAlcoholicDrinks.isEmpty {
+            navigationItem.title = ""
             searchBar.makeEmptyResultsLabel(with: searchText, for: self.view)
+        } else {
+            navigationItem.title = "Cocktails"
         }
         
         isSearching = !searchText.isEmpty ? true : false

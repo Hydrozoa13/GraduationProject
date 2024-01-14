@@ -25,7 +25,10 @@ extension IngredientsTVC: UISearchBarDelegate {
         filteredIngredients = ingredients.filter({$0.strIngredient1!.lowercased().contains(text)})
         
         if !text.isEmpty, filteredIngredients.isEmpty {
+            navigationItem.title = ""
             searchBar.makeEmptyResultsLabel(with: searchText, for: self.view)
+        } else {
+            navigationItem.title = "Ingredients"
         }
         
         isSearching = !searchText.isEmpty ? true : false
