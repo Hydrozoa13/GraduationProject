@@ -87,6 +87,7 @@ class DrinkDetailVC: UIViewController {
         guard let thumbnailUrl = drink?.strDrinkThumb else { return }
         NetworkService.getThumbnail(thumbnailUrl: thumbnailUrl) { [weak self] image, _ in
             DispatchQueue.main.async {
+                self?.imageView.layer.cornerRadius = 15
                 self?.imageView.image = image
                 self?.activityIndicator.stopAnimating()
             }
