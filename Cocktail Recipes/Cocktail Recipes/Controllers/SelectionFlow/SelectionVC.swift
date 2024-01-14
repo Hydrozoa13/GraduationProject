@@ -12,7 +12,7 @@ class SelectionVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     private var drinksData = [String:[Drink]]()
-    private var drink: Drink?
+    var drink: Drink?
     
     private var thumbnailUrl: String? {
         didSet {
@@ -21,7 +21,10 @@ class SelectionVC: UIViewController {
         }
     }
     
-    @IBAction func randomBtn() { fetchDrink(url: ApiConstants.randomCocktailURL) }
+    @IBAction func randomBtn() {
+        fetchDrink(url: ApiConstants.randomCocktailURL)
+        setLongPressRecognizer()
+    }
     
     //MARK: - Private functions
     
