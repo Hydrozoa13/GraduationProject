@@ -22,7 +22,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18+ Excessive alcohol consumption is harmful to your health" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZES-gl-KQL">
-                                <rect key="frame" x="25" y="784.33333333333337" width="343" height="33.666666666666629"/>
+                                <rect key="frame" x="25" y="779.33333333333337" width="343" height="33.666666666666629"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -31,7 +31,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZES-gl-KQL" secondAttribute="bottom" id="HGw-Rl-tzn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZES-gl-KQL" secondAttribute="bottom" constant="5" id="HGw-Rl-tzn"/>
                             <constraint firstItem="hUL-03-KHh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-100" id="QoW-GE-OFG"/>
                             <constraint firstAttribute="trailing" secondItem="ZES-gl-KQL" secondAttribute="trailing" constant="25" id="Yqk-73-hJl"/>
                             <constraint firstItem="hUL-03-KHh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fm9-a8-WXR"/>

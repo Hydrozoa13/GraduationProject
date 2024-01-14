@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIN-Wi-w65">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zIN-Wi-w65">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -329,6 +329,7 @@
                         <color key="selectedImageTintColor" red="0.56862745098039214" green="0.68235294117647061" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
+                        <segue destination="49N-FJ-oVI" kind="relationship" relationship="viewControllers" id="3Sa-SA-FA6"/>
                         <segue destination="ZaA-AC-O8o" kind="relationship" relationship="viewControllers" id="hTA-b0-Krh"/>
                         <segue destination="RFL-6L-xzx" kind="relationship" relationship="viewControllers" id="9c7-EK-BrL"/>
                     </connections>
@@ -501,9 +502,85 @@
             </objects>
             <point key="canvasLocation" x="615" y="1344"/>
         </scene>
+        <!--Selection-->
+        <scene sceneID="Gq6-rH-X9g">
+            <objects>
+                <viewController id="49N-FJ-oVI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bDD-oI-L4s">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYw-FY-Ue7">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rck-fb-qxj">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="710"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktail-glass-with-liquor" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-Dv-WQC">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
+                                                <color key="backgroundColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="aOw-Dv-WQC" secondAttribute="height" multiplier="1:1" id="bv0-gk-gZf"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-BP-YJd">
+                                                <rect key="frame" x="25" y="423" width="343" height="64.333333333333314"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled">
+                                                    <string key="title">Let the Universe 
+ choose for you</string>
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="21"/>
+                                                    <color key="baseForegroundColor" red="0.56841878030000004" green="0.68167972200000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="baseBackgroundColor" red="0.2279961586" green="0.22906288929999999" blue="0.24534105580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="aOw-Dv-WQC" firstAttribute="top" secondItem="Rck-fb-qxj" secondAttribute="top" id="G0c-zm-gm3"/>
+                                            <constraint firstAttribute="trailing" secondItem="3o8-BP-YJd" secondAttribute="trailing" constant="25" id="gID-Mq-BDV"/>
+                                            <constraint firstItem="aOw-Dv-WQC" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" id="ifO-ov-f7r"/>
+                                            <constraint firstItem="3o8-BP-YJd" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" constant="25" id="jXB-kS-gPq"/>
+                                            <constraint firstAttribute="trailing" secondItem="aOw-Dv-WQC" secondAttribute="trailing" id="uxb-YZ-4RE"/>
+                                            <constraint firstItem="3o8-BP-YJd" firstAttribute="top" secondItem="aOw-Dv-WQC" secondAttribute="bottom" constant="30" id="xr7-Qi-XXl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Rck-fb-qxj" firstAttribute="leading" secondItem="IYw-FY-Ue7" secondAttribute="leading" id="Tkg-fK-EvV"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rck-fb-qxj" secondAttribute="trailing" id="ZoH-4d-VeQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rck-fb-qxj" secondAttribute="bottom" id="afX-TH-N4W"/>
+                                    <constraint firstItem="Rck-fb-qxj" firstAttribute="top" secondItem="IYw-FY-Ue7" secondAttribute="top" id="fey-lX-C5W"/>
+                                    <constraint firstItem="2O1-3x-Zdq" firstAttribute="bottom" secondItem="Rck-fb-qxj" secondAttribute="bottom" id="kvx-Ll-P29"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="6i1-sW-OuM"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="2O1-3x-Zdq"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cTe-P4-d0h"/>
+                        <color key="backgroundColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Rck-fb-qxj" firstAttribute="width" secondItem="bDD-oI-L4s" secondAttribute="width" id="EEO-eC-0Vb"/>
+                            <constraint firstItem="cTe-P4-d0h" firstAttribute="trailing" secondItem="IYw-FY-Ue7" secondAttribute="trailing" id="bK2-nf-IrJ"/>
+                            <constraint firstItem="IYw-FY-Ue7" firstAttribute="leading" secondItem="cTe-P4-d0h" secondAttribute="leading" id="vLY-Vn-C4X"/>
+                            <constraint firstItem="cTe-P4-d0h" firstAttribute="bottom" secondItem="IYw-FY-Ue7" secondAttribute="bottom" id="wCu-uz-Cyb"/>
+                            <constraint firstItem="IYw-FY-Ue7" firstAttribute="top" secondItem="cTe-P4-d0h" secondAttribute="top" id="ytE-Ca-54Z"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Selection" image="star" id="Wid-6m-1lX">
+                        <color key="badgeColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="NJG-YF-VDY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ROL-bp-qaE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-147" y="-761"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="cocktail-glass-with-liquor" width="256" height="256"/>
         <image name="cocktails-32px" width="32" height="32"/>
         <image name="ingredients-32px" width="32" height="32"/>
+        <image name="star" width="32" height="32"/>
     </resources>
 </document>
