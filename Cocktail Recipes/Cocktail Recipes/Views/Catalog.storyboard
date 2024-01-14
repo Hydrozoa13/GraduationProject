@@ -505,7 +505,7 @@
         <!--Selection-->
         <scene sceneID="Gq6-rH-X9g">
             <objects>
-                <viewController id="49N-FJ-oVI" sceneMemberID="viewController">
+                <viewController id="49N-FJ-oVI" customClass="SelectionVC" customModule="Cocktail_Recipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bDD-oI-L4s">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -516,15 +516,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rck-fb-qxj">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="710"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktail-glass-with-liquor" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-Dv-WQC">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktail-glass-with-liquor" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-Dv-WQC">
+                                                <rect key="frame" x="25" y="25" width="343" height="343"/>
                                                 <color key="backgroundColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="aOw-Dv-WQC" secondAttribute="height" multiplier="1:1" id="bv0-gk-gZf"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-BP-YJd">
-                                                <rect key="frame" x="25" y="423" width="343" height="64.333333333333314"/>
+                                                <rect key="frame" x="25" y="398" width="343" height="64.333333333333314"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled">
                                                     <string key="title">Let the Universe 
@@ -533,15 +533,18 @@
                                                     <color key="baseForegroundColor" red="0.56841878030000004" green="0.68167972200000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="baseBackgroundColor" red="0.2279961586" green="0.22906288929999999" blue="0.24534105580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="randomBtn" destination="49N-FJ-oVI" eventType="touchUpInside" id="hgv-Iy-bId"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstItem="aOw-Dv-WQC" firstAttribute="top" secondItem="Rck-fb-qxj" secondAttribute="top" id="G0c-zm-gm3"/>
+                                            <constraint firstItem="aOw-Dv-WQC" firstAttribute="top" secondItem="Rck-fb-qxj" secondAttribute="top" constant="25" id="G0c-zm-gm3"/>
                                             <constraint firstAttribute="trailing" secondItem="3o8-BP-YJd" secondAttribute="trailing" constant="25" id="gID-Mq-BDV"/>
-                                            <constraint firstItem="aOw-Dv-WQC" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" id="ifO-ov-f7r"/>
+                                            <constraint firstItem="aOw-Dv-WQC" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" constant="25" id="ifO-ov-f7r"/>
                                             <constraint firstItem="3o8-BP-YJd" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" constant="25" id="jXB-kS-gPq"/>
-                                            <constraint firstAttribute="trailing" secondItem="aOw-Dv-WQC" secondAttribute="trailing" id="uxb-YZ-4RE"/>
+                                            <constraint firstAttribute="trailing" secondItem="aOw-Dv-WQC" secondAttribute="trailing" constant="25" id="uxb-YZ-4RE"/>
                                             <constraint firstItem="3o8-BP-YJd" firstAttribute="top" secondItem="aOw-Dv-WQC" secondAttribute="bottom" constant="30" id="xr7-Qi-XXl"/>
                                         </constraints>
                                     </view>
@@ -571,6 +574,9 @@
                         <color key="badgeColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="NJG-YF-VDY"/>
+                    <connections>
+                        <outlet property="imageView" destination="aOw-Dv-WQC" id="Z3I-0G-uhy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROL-bp-qaE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

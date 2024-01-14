@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D1307FC82B39E46600728525 /* UISearchBarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1307FC72B39E46600728525 /* UISearchBarExt.swift */; };
+		D13DB2582B544E78003C6D3F /* SelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB2572B544E78003C6D3F /* SelectionVC.swift */; };
 		D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79832AFF9AAD0063851D /* AppDelegate.swift */; };
 		D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79852AFF9AAD0063851D /* SceneDelegate.swift */; };
 		D17D798D2AFF9AAF0063851D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17D798C2AFF9AAF0063851D /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		D1307FC72B39E46600728525 /* UISearchBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExt.swift; sourceTree = "<group>"; };
+		D13DB2572B544E78003C6D3F /* SelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionVC.swift; sourceTree = "<group>"; };
 		D17D79802AFF9AAD0063851D /* Cocktail Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cocktail Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17D79832AFF9AAD0063851D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17D79852AFF9AAD0063851D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D13DB2562B544E4B003C6D3F /* SelectionFlow */ = {
+			isa = PBXGroup;
+			children = (
+				D13DB2572B544E78003C6D3F /* SelectionVC.swift */,
+			);
+			path = SelectionFlow;
+			sourceTree = "<group>";
+		};
 		D17D79772AFF9AAD0063851D = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				D19C1D542B0BB7C400B6AD6A /* Cell */,
+				D13DB2562B544E4B003C6D3F /* SelectionFlow */,
 				D1FFC6D02B1CEEEE00AD22AE /* DrinksFlow */,
 				D1FFC6D12B1CEF0000AD22AE /* IngredientsFlow */,
 			);
@@ -301,6 +312,7 @@
 				D199F8A72B2869AB005B42FE /* CollectionViewCell.swift in Sources */,
 				D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */,
 				D1D05A102B14A1DA00135D53 /* IngredientsTVC.swift in Sources */,
+				D13DB2582B544E78003C6D3F /* SelectionVC.swift in Sources */,
 				D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */,
 				D19C1D602B0BDB6D00B6AD6A /* CatalogCell.swift in Sources */,
 				D1D05A1A2B15DB1200135D53 /* CacheService.swift in Sources */,
