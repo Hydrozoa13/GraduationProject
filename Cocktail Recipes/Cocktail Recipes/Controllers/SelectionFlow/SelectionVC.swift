@@ -8,7 +8,8 @@
 import UIKit
 
 class SelectionVC: UIViewController {
-
+    
+    @IBOutlet weak var appNameLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var randomCocktailBtn: UIButton!
     
@@ -32,6 +33,7 @@ class SelectionVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if viewState {
+            appNameLbl.animateView()
             randomCocktailBtn.animateView()
         }
     }
