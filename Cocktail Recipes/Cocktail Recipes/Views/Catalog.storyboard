@@ -518,27 +518,42 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rck-fb-qxj">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="710"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-Dv-WQC">
-                                                <rect key="frame" x="25" y="98.666666666666629" width="343" height="343"/>
-                                                <color key="backgroundColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="aOw-Dv-WQC" secondAttribute="height" multiplier="1:1" id="bv0-gk-gZf"/>
-                                                </constraints>
-                                            </imageView>
-                                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-BP-YJd">
-                                                <rect key="frame" x="25" y="471.66666666666663" width="343" height="69"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled">
-                                                    <string key="title">Let the Universe 
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pe-Wz-9s3">
+                                                <rect key="frame" x="15" y="98.666666666666629" width="363" height="447"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-Dv-WQC">
+                                                        <rect key="frame" x="15" y="15" width="333" height="333"/>
+                                                        <color key="backgroundColor" red="0.2279961586" green="0.22906288929999999" blue="0.24534105580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="aOw-Dv-WQC" secondAttribute="height" multiplier="1:1" id="bv0-gk-gZf"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-BP-YJd">
+                                                        <rect key="frame" x="15" y="363" width="333" height="69"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" cornerStyle="large">
+                                                            <string key="title">Let the Universe 
  choose for you</string>
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="23"/>
-                                                    <color key="baseForegroundColor" red="0.56841878030000004" green="0.68167972200000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <color key="baseBackgroundColor" red="0.2279961586" green="0.22906288929999999" blue="0.24534105580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="randomCocktailBtnPressed:" destination="49N-FJ-oVI" eventType="touchUpInside" id="Me4-S1-e81"/>
-                                                </connections>
-                                            </button>
+                                                            <fontDescription key="titleFontDescription" type="system" weight="light" pointSize="23"/>
+                                                            <color key="baseForegroundColor" red="0.56841878030000004" green="0.68167972200000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="baseBackgroundColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="randomCocktailBtnPressed:" destination="49N-FJ-oVI" eventType="touchUpInside" id="Me4-S1-e81"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.2279961586" green="0.22906288929999999" blue="0.24534105580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="3o8-BP-YJd" secondAttribute="bottom" constant="15" id="QDm-gH-dgA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3o8-BP-YJd" secondAttribute="trailing" constant="15" id="VGi-MC-QlH"/>
+                                                    <constraint firstItem="aOw-Dv-WQC" firstAttribute="leading" secondItem="5pe-Wz-9s3" secondAttribute="leading" constant="15" id="ZTq-CW-Tqy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="aOw-Dv-WQC" secondAttribute="trailing" constant="15" id="cf2-qB-IYc"/>
+                                                    <constraint firstItem="aOw-Dv-WQC" firstAttribute="top" secondItem="5pe-Wz-9s3" secondAttribute="top" constant="15" id="eb3-dg-P1B"/>
+                                                    <constraint firstItem="3o8-BP-YJd" firstAttribute="top" secondItem="aOw-Dv-WQC" secondAttribute="bottom" constant="15" id="hPv-ji-xSD"/>
+                                                    <constraint firstItem="3o8-BP-YJd" firstAttribute="leading" secondItem="5pe-Wz-9s3" secondAttribute="leading" constant="15" id="pAu-Gs-AIC"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cocktail Recipes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTQ-DB-ub2">
                                                 <rect key="frame" x="25" y="24.999999999999996" width="343" height="48.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="AcademyEngravedLetPlain" family="Academy Engraved LET" pointSize="41"/>
@@ -549,14 +564,11 @@
                                         <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="lTQ-DB-ub2" secondAttribute="trailing" constant="25" id="9MH-XR-1tR"/>
-                                            <constraint firstAttribute="trailing" secondItem="3o8-BP-YJd" secondAttribute="trailing" constant="25" id="gID-Mq-BDV"/>
-                                            <constraint firstItem="aOw-Dv-WQC" firstAttribute="top" secondItem="lTQ-DB-ub2" secondAttribute="bottom" constant="25" id="hv7-jZ-OIL"/>
-                                            <constraint firstItem="aOw-Dv-WQC" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" constant="25" id="ifO-ov-f7r"/>
+                                            <constraint firstItem="5pe-Wz-9s3" firstAttribute="top" secondItem="lTQ-DB-ub2" secondAttribute="bottom" constant="25" id="gdW-e1-3kC"/>
+                                            <constraint firstAttribute="trailing" secondItem="5pe-Wz-9s3" secondAttribute="trailing" constant="15" id="hhn-BE-Kn8"/>
                                             <constraint firstItem="lTQ-DB-ub2" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" constant="25" id="j80-9V-bhQ"/>
-                                            <constraint firstItem="3o8-BP-YJd" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" constant="25" id="jXB-kS-gPq"/>
                                             <constraint firstItem="lTQ-DB-ub2" firstAttribute="top" secondItem="Rck-fb-qxj" secondAttribute="top" constant="25" id="qVQ-Gl-YZo"/>
-                                            <constraint firstAttribute="trailing" secondItem="aOw-Dv-WQC" secondAttribute="trailing" constant="25" id="uxb-YZ-4RE"/>
-                                            <constraint firstItem="3o8-BP-YJd" firstAttribute="top" secondItem="aOw-Dv-WQC" secondAttribute="bottom" constant="30" id="xr7-Qi-XXl"/>
+                                            <constraint firstItem="5pe-Wz-9s3" firstAttribute="leading" secondItem="Rck-fb-qxj" secondAttribute="leading" constant="15" id="qht-nM-MUo"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -587,6 +599,7 @@
                     <navigationItem key="navigationItem" id="NJG-YF-VDY"/>
                     <connections>
                         <outlet property="appNameLbl" destination="lTQ-DB-ub2" id="MFE-Mn-UUo"/>
+                        <outlet property="backgroundView" destination="5pe-Wz-9s3" id="tfh-dc-35E"/>
                         <outlet property="imageView" destination="aOw-Dv-WQC" id="Z3I-0G-uhy"/>
                         <outlet property="randomCocktailBtn" destination="3o8-BP-YJd" id="UVp-fl-7OX"/>
                     </connections>

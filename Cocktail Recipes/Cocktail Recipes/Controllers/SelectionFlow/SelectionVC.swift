@@ -9,6 +9,7 @@ import UIKit
 
 class SelectionVC: UIViewController {
     
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var appNameLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var randomCocktailBtn: UIButton!
@@ -26,6 +27,7 @@ class SelectionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         fetchDrink(url: ApiConstants.randomCocktailURL)
         setLongPressRecognizer()
     }
@@ -34,6 +36,7 @@ class SelectionVC: UIViewController {
         super.viewDidAppear(animated)
         if viewState {
             appNameLbl.animateView()
+            backgroundView.animateView()
             randomCocktailBtn.animateView()
         }
     }
@@ -49,6 +52,13 @@ class SelectionVC: UIViewController {
     }
     
     //MARK: - Private functions
+    
+    private func setupUI() {
+        backgroundView.layer.cornerRadius = 15
+        randomCocktailBtn.layer.cornerRadius = 15
+        randomCocktailBtn.layer.borderWidth = 3
+        randomCocktailBtn.layer.borderColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
+    }
     
     private func getThumbnailUrl() {
         if let url = thumbnailUrl {
