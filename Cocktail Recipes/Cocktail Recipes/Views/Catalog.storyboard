@@ -518,14 +518,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rck-fb-qxj">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="710"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cocktail-glass-with-liquor" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-Dv-WQC">
+                                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOw-Dv-WQC">
                                                 <rect key="frame" x="25" y="25" width="343" height="343"/>
                                                 <color key="backgroundColor" red="0.1176470518" green="0.1176470518" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="aOw-Dv-WQC" secondAttribute="height" multiplier="1:1" id="bv0-gk-gZf"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-BP-YJd">
+                                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3o8-BP-YJd">
                                                 <rect key="frame" x="25" y="398" width="343" height="69"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled">
@@ -536,7 +536,7 @@
                                                     <color key="baseBackgroundColor" red="0.2279961586" green="0.22906288929999999" blue="0.24534105580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="randomBtn" destination="49N-FJ-oVI" eventType="touchUpInside" id="hgv-Iy-bId"/>
+                                                    <action selector="randomCocktailBtnPressed:" destination="49N-FJ-oVI" eventType="touchUpInside" id="Me4-S1-e81"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -578,6 +578,7 @@
                     <navigationItem key="navigationItem" id="NJG-YF-VDY"/>
                     <connections>
                         <outlet property="imageView" destination="aOw-Dv-WQC" id="Z3I-0G-uhy"/>
+                        <outlet property="randomCocktailBtn" destination="3o8-BP-YJd" id="UVp-fl-7OX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROL-bp-qaE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -586,7 +587,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cocktail-glass-with-liquor" width="256" height="256"/>
         <image name="cocktails-32px" width="32" height="32"/>
         <image name="ingredients-32px" width="32" height="32"/>
         <image name="star" width="32" height="32"/>

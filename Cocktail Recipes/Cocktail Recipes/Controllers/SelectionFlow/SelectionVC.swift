@@ -10,7 +10,9 @@ import UIKit
 class SelectionVC: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var randomCocktailBtn: UIButton!
     
+    private var viewState = true
     private var drinksData = [String:[Drink]]()
     var drink: Drink?
     
@@ -21,9 +23,27 @@ class SelectionVC: UIViewController {
         }
     }
     
-    @IBAction func randomBtn() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         fetchDrink(url: ApiConstants.randomCocktailURL)
         setLongPressRecognizer()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if viewState {
+            randomCocktailBtn.animateView()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewState = false
+    }
+    
+    @IBAction func randomCocktailBtnPressed(_ sender: UIButton) {
+        sender.flashAnimation()
+        fetchDrink(url: ApiConstants.randomCocktailURL)
     }
     
     //MARK: - Private functions
@@ -33,6 +53,7 @@ class SelectionVC: UIViewController {
             NetworkService.getThumbnail(thumbnailUrl: url) { [weak self] image, _ in
                 if url == self?.thumbnailUrl {
                     self?.imageView.layer.cornerRadius = 15
+                    self?.imageView.animateView()
                     self?.imageView.image = image
                 }
             }

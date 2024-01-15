@@ -10,6 +10,7 @@
 		D1307FC82B39E46600728525 /* UISearchBarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1307FC72B39E46600728525 /* UISearchBarExt.swift */; };
 		D13DB2582B544E78003C6D3F /* SelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB2572B544E78003C6D3F /* SelectionVC.swift */; };
 		D13DB25A2B545603003C6D3F /* SelectionVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB2592B545603003C6D3F /* SelectionVCExt.swift */; };
+		D13DB2602B5560A0003C6D3F /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */; };
 		D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79832AFF9AAD0063851D /* AppDelegate.swift */; };
 		D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79852AFF9AAD0063851D /* SceneDelegate.swift */; };
 		D17D798D2AFF9AAF0063851D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17D798C2AFF9AAF0063851D /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		D1307FC72B39E46600728525 /* UISearchBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExt.swift; sourceTree = "<group>"; };
 		D13DB2572B544E78003C6D3F /* SelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionVC.swift; sourceTree = "<group>"; };
 		D13DB2592B545603003C6D3F /* SelectionVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionVCExt.swift; sourceTree = "<group>"; };
+		D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		D17D79802AFF9AAD0063851D /* Cocktail Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cocktail Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17D79832AFF9AAD0063851D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17D79852AFF9AAD0063851D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */,
 				D1307FC72B39E46600728525 /* UISearchBarExt.swift */,
 				D13DB2592B545603003C6D3F /* SelectionVCExt.swift */,
+				D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				D199F8A72B2869AB005B42FE /* CollectionViewCell.swift in Sources */,
 				D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */,
 				D1D05A102B14A1DA00135D53 /* IngredientsTVC.swift in Sources */,
+				D13DB2602B5560A0003C6D3F /* UIViewExt.swift in Sources */,
 				D13DB2582B544E78003C6D3F /* SelectionVC.swift in Sources */,
 				D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */,
 				D19C1D602B0BDB6D00B6AD6A /* CatalogCell.swift in Sources */,
