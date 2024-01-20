@@ -11,8 +11,9 @@ class DrinkDetailVC: UIViewController {
     
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var favoriteBtn: UIButton!
     @IBOutlet private weak var strDrink: UILabel!
-    @IBOutlet var ingredientsLbls: [UILabel]!
+    @IBOutlet private var ingredientsLbls: [UILabel]!
     @IBOutlet private weak var strInstructions: UILabel!
     
     var drink: Drink? { didSet { getThumbnailUrl() } }
@@ -24,6 +25,10 @@ class DrinkDetailVC: UIViewController {
         setupUI()
         fetchDrinkDetails(drinkId: drink?.idDrink)
     }
+    
+    @IBAction func favoriteBtnTapped(_ sender: UIButton) {
+    }
+    
     
     //MARK: - Private functions
     
@@ -46,6 +51,16 @@ class DrinkDetailVC: UIViewController {
     
     private func setupUI() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
+        
+        favoriteBtn.layer.cornerRadius = 15
+        
+        
+        favoriteBtn.layer.masksToBounds = false
+        
+    
+        
+        
+        
         strDrink.text = drink?.strDrink
     }
     
