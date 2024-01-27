@@ -16,6 +16,10 @@ class StorageService {
         realm.objects(DrinkRealmModel.self)
     }
     
+    static func getDrinkRealmModel(by id: String) -> DrinkRealmModel? {
+        realm.objects(DrinkRealmModel.self).filter("idDrink == %@", id).first
+    }
+    
     static func deleteAll() {
         do {
             try realm.write {
@@ -33,6 +37,16 @@ class StorageService {
             }
         } catch {
             print("saveFavoriteDrink error \(error)")
+        }
+    }
+    
+    static func deleteFavoriteDrink(drinkToDelete: DrinkRealmModel) {
+        do {
+            try realm.write {
+                realm.delete(drinkToDelete)
+            }
+        } catch {
+            print("deleteFavoriteDrink error \(error)")
         }
     }
     

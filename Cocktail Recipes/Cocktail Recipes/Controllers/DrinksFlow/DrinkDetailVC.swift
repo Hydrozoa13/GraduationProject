@@ -17,6 +17,8 @@ class DrinkDetailVC: UIViewController {
     @IBOutlet private weak var strInstructions: UILabel!
     
     var drink: Drink? { didSet { getThumbnailUrl() } }
+    private var drinkRealmModel: DrinkRealmModel? { didSet { setImageForFavoriteBtn() } }
+    
     private var drinkData = [String:[Drink]]()
     private var updatedDrink: Drink?
     
@@ -24,18 +26,25 @@ class DrinkDetailVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         fetchDrinkDetails(drinkId: drink?.idDrink)
+        fetchDrinkRealmModel()
     }
     
     @IBAction func favoriteBtnTapped(_ sender: UIButton) {
         
-        guard let drink,
-              let favoriteDrink = makeDrinkRealmModel(from: drink) else { return }
-        
-        StorageService.saveFavoriteDrink(favoriteDrink: favoriteDrink)
-        
+        if let drinkRealmModel {
+            StorageService.deleteFavoriteDrink(drinkToDelete: drinkRealmModel)
+            sender.setImage(UIImage(named: "fav"), for: .normal)
+            self.drinkRealmModel = nil
+        } else {
+            guard let drink,
+                  let favoriteDrink = makeDrinkRealmModel(from: drink) else { return }
+            
+            StorageService.saveFavoriteDrink(favoriteDrink: favoriteDrink)
+            sender.setImage(UIImage(named: "favorite"), for: .normal)
+            drinkRealmModel = StorageService.getDrinkRealmModel(by: drink.idDrink)
+        }
     }
-    
-    
+
     //MARK: - Private functions
     
     private func fetchDrinkDetails(drinkId: String?) {
@@ -57,16 +66,8 @@ class DrinkDetailVC: UIViewController {
     
     private func setupUI() {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
-        
         favoriteBtn.layer.cornerRadius = 15
-        
-        
         favoriteBtn.layer.masksToBounds = false
-        
-    
-        
-        
-        
         strDrink.text = drink?.strDrink
     }
     
@@ -115,6 +116,11 @@ class DrinkDetailVC: UIViewController {
         }
     }
     
+    private func fetchDrinkRealmModel() {
+        guard let drink else { return }
+        drinkRealmModel = StorageService.getDrinkRealmModel(by: drink.idDrink)
+    }
+    
     private func makeDrinkRealmModel(from drink: Drink) -> DrinkRealmModel? {
         
         guard let strDrink = drink.strDrink,
@@ -126,5 +132,13 @@ class DrinkDetailVC: UIViewController {
         favoriteDrink.strDrinkThumb = strDrinkThumb
         
         return favoriteDrink
+    }
+    
+    private func setImageForFavoriteBtn() {
+        if drinkRealmModel != nil {
+            favoriteBtn.setImage(UIImage(named: "sparkle"), for: .normal)
+        } else {
+            favoriteBtn.setImage(UIImage(named: "fav"), for: .normal)
+        }
     }
 }
