@@ -27,6 +27,12 @@ class DrinkDetailVC: UIViewController {
     }
     
     @IBAction func favoriteBtnTapped(_ sender: UIButton) {
+        
+        guard let drink,
+              let favoriteDrink = makeDrinkRealmModel(from: drink) else { return }
+        
+        StorageService.saveFavoriteDrink(favoriteDrink: favoriteDrink)
+        
     }
     
     
@@ -107,5 +113,18 @@ class DrinkDetailVC: UIViewController {
                 self?.activityIndicator.stopAnimating()
             }
         }
+    }
+    
+    private func makeDrinkRealmModel(from drink: Drink) -> DrinkRealmModel? {
+        
+        guard let strDrink = drink.strDrink,
+              let strDrinkThumb = drink.strDrinkThumb else { return nil }
+        
+        let favoriteDrink = DrinkRealmModel()
+        favoriteDrink.idDrink = drink.idDrink
+        favoriteDrink.strDrink = strDrink
+        favoriteDrink.strDrinkThumb = strDrinkThumb
+        
+        return favoriteDrink
     }
 }

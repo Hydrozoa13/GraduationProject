@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SelectionVC: UIViewController {
     
@@ -13,12 +14,12 @@ class SelectionVC: UIViewController {
     @IBOutlet weak private var appNameLbl: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak private var randomCocktailBtn: UIButton!
-    
-    @IBOutlet weak var favoritesBackgroundView: UIView!
+    @IBOutlet weak private var favoritesBackgroundView: UIView!
     
     private var viewState = true
     private var drinksData = [String:[Drink]]()
     var drink: Drink?
+    private var favoriteDrinksList: Results<DrinkRealmModel>!
     
     private var thumbnailUrl: String? {
         didSet {
@@ -32,6 +33,7 @@ class SelectionVC: UIViewController {
         setupUI()
         fetchDrink(url: ApiConstants.randomCocktailURL)
         setLongPressRecognizer()
+        getFavoriteDrinks()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,5 +94,9 @@ class SelectionVC: UIViewController {
                 self.thumbnailUrl = self.drink?.strDrinkThumb
             }
         }.resume()
+    }
+    
+    private func getFavoriteDrinks() {
+        favoriteDrinksList = StorageService.getFavoriteDrinksList()
     }
 }

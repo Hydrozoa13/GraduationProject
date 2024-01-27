@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum DrinkType {
     case alcoholic
@@ -31,4 +32,10 @@ struct Drink: Codable {
         strMeasure7, strMeasure8, strMeasure9,
         strMeasure10, strMeasure11, strMeasure12,
         strMeasure13, strMeasure14, strMeasure15: String?
+}
+
+class DrinkRealmModel: Object {
+    @Persisted var idDrink = ""
+    @Persisted var strDrink = ""
+    @Persisted var strDrinkThumb = ""
 }
