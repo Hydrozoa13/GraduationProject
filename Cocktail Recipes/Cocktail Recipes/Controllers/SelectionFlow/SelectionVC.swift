@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 class SelectionVC: UIViewController {
     
@@ -19,7 +19,7 @@ class SelectionVC: UIViewController {
     private var viewState = true
     private var drinksData = [String:[Drink]]()
     var drink: Drink?
-    private var favoriteDrinksList: Results<DrinkRealmModel>!
+    private var favoritesCollectionView = FavoritesCollectionView()
     
     private var thumbnailUrl: String? {
         didSet {
@@ -33,7 +33,6 @@ class SelectionVC: UIViewController {
         setupUI()
         fetchDrink(url: ApiConstants.randomCocktailURL)
         setLongPressRecognizer()
-        getFavoriteDrinks()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,11 +59,19 @@ class SelectionVC: UIViewController {
     
     private func setupUI() {
         backgroundView.layer.cornerRadius = 15
+        
         randomCocktailBtn.layer.cornerRadius = 15
         randomCocktailBtn.layer.borderWidth = 3
         randomCocktailBtn.layer.borderColor = #colorLiteral(red: 0.5386385322, green: 0.6859211922, blue: 0, alpha: 1)
         
         favoritesBackgroundView.layer.cornerRadius = 15
+        favoritesBackgroundView.addSubview(favoritesCollectionView)
+        
+        favoritesCollectionView.leadingAnchor.constraint(equalTo: favoritesBackgroundView.leadingAnchor, constant: 15).isActive = true
+        favoritesCollectionView.trailingAnchor.constraint(equalTo: favoritesBackgroundView.trailingAnchor, constant: -15).isActive = true
+        favoritesCollectionView.topAnchor.constraint(equalTo: favoritesBackgroundView.topAnchor, constant: 60).isActive = true
+        favoritesCollectionView.bottomAnchor.constraint(equalTo: favoritesBackgroundView.bottomAnchor, constant: -15).isActive = true
+        favoritesCollectionView.layer.cornerRadius = 15
     }
     
     private func getThumbnailUrl() {
@@ -94,9 +101,5 @@ class SelectionVC: UIViewController {
                 self.thumbnailUrl = self.drink?.strDrinkThumb
             }
         }.resume()
-    }
-    
-    private func getFavoriteDrinks() {
-        favoriteDrinksList = StorageService.getFavoriteDrinksList()
     }
 }
