@@ -8,9 +8,10 @@
 import UIKit
 import RealmSwift
 
-class FavoritesCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class FavoritesCollectionView: UICollectionView {
     
     private var favoriteDrinksList: Results<DrinkRealmModel> = StorageService.getFavoriteDrinksList()
+    private var notificationToken: NotificationToken?
    
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -23,7 +24,35 @@ class FavoritesCollectionView: UICollectionView, UICollectionViewDelegate, UICol
         register(FavoritesCVC.self, forCellWithReuseIdentifier: FavoritesCVC.reuseId)
         
         translatesAutoresizingMaskIntoConstraints = false
+        
+        setNotificationToken()
     }
+    
+    private func setNotificationToken() {
+        
+        notificationToken = favoriteDrinksList.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let collectionView = self else { return }
+            
+            switch changes {
+                case .initial:
+                    collectionView.reloadData()
+                case .update(_, let deletions, let insertions, _):
+                    collectionView.performBatchUpdates({
+                        collectionView.deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
+                        collectionView.insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
+                    })
+                case .error(let error):
+                    fatalError("\(error)")
+            }
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension FavoritesCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         favoriteDrinksList.count
@@ -39,8 +68,4 @@ class FavoritesCollectionView: UICollectionView, UICollectionViewDelegate, UICol
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        <#code#>
 //    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

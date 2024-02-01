@@ -13,35 +13,32 @@ class FavoritesCVC: UICollectionViewCell {
     
     private let mainImageView = UIImageView()
     
-    var thumbnailUrl: String? {
-        didSet {
-//            mainImageView.image = nil
-            getThumbnailUrl()
-        }
-    }
-    
-    private func getThumbnailUrl() {
-        if let url = thumbnailUrl {
-            NetworkService.getThumbnail(thumbnailUrl: url) { [weak self] image, _ in
-                if url == self?.thumbnailUrl {
-                    self?.mainImageView.layer.cornerRadius = 15
-                    self?.mainImageView.image = image
-                }
-            }
-        }
-    }
+    var thumbnailUrl: String? { didSet { getThumbnailUrl() } }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         addSubview(mainImageView)
         
         mainImageView.backgroundColor = .red
+//        mainImageView.layer.cornerRadius = 15
         mainImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         mainImageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         mainImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         mainImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         mainImageView.translatesAutoresizingMaskIntoConstraints = false
         
+    }
+    
+    private func getThumbnailUrl() {
+        if let url = thumbnailUrl {
+            NetworkService.getThumbnail(thumbnailUrl: url) { [weak self] image, _ in
+                if url == self?.thumbnailUrl {
+//                    self?.mainImageView.layer.cornerRadius = 15
+                    self?.mainImageView.image = image
+                }
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
