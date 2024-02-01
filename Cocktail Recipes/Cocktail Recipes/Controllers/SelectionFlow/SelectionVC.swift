@@ -11,13 +11,13 @@ class SelectionVC: UIViewController {
     
     @IBOutlet weak private var backgroundView: UIView!
     @IBOutlet weak private var appNameLbl: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak private var imageView: UIImageView!
     @IBOutlet weak private var randomCocktailBtn: UIButton!
     @IBOutlet weak private var favoritesBackgroundView: UIView!
     
     private var viewState = true
     private var drinksData = [String:[Drink]]()
-    var drink: Drink?
+    private var drink: Drink?
     private var favoritesCollectionView = FavoritesCollectionView()
     
     private var thumbnailUrl: String? {
@@ -49,7 +49,7 @@ class SelectionVC: UIViewController {
         viewState = false
     }
     
-    @IBAction func randomCocktailBtnPressed(_ sender: UIButton) {
+    @IBAction private func randomCocktailBtnPressed(_ sender: UIButton) {
         sender.flashAnimation()
         fetchDrink(url: ApiConstants.randomCocktailURL)
     }
@@ -100,5 +100,21 @@ class SelectionVC: UIViewController {
                 self.thumbnailUrl = self.drink?.strDrinkThumb
             }
         }.resume()
+    }
+}
+
+extension SelectionVC {
+    
+    func setLongPressRecognizer() {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
+        self.imageView.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "DrinkDetailVC") as! DrinkDetailVC
+            vc.drink = self.drink
+            present(vc, animated: true)
+        }
     }
 }

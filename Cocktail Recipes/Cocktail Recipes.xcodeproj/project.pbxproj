@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D1307FC82B39E46600728525 /* UISearchBarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1307FC72B39E46600728525 /* UISearchBarExt.swift */; };
 		D13DB2582B544E78003C6D3F /* SelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB2572B544E78003C6D3F /* SelectionVC.swift */; };
-		D13DB25A2B545603003C6D3F /* SelectionVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB2592B545603003C6D3F /* SelectionVCExt.swift */; };
 		D13DB2602B5560A0003C6D3F /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */; };
 		D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79832AFF9AAD0063851D /* AppDelegate.swift */; };
 		D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79852AFF9AAD0063851D /* SceneDelegate.swift */; };
@@ -28,14 +27,12 @@
 		D19C1D5D2B0BC37500B6AD6A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */; };
 		D19C1D602B0BDB6D00B6AD6A /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D5E2B0BDB6D00B6AD6A /* CatalogCell.swift */; };
 		D19C1D612B0BDB6D00B6AD6A /* CatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */; };
-		D19C1D642B0BEB0900B6AD6A /* CatalogTVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */; };
 		D1CDC73A2B63C11600D4F3BB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D1CDC7392B63C11600D4F3BB /* Realm */; };
 		D1CDC73C2B63C11600D4F3BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D1CDC73B2B63C11600D4F3BB /* RealmSwift */; };
 		D1CDC73E2B63C3C600D4F3BB /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CDC73D2B63C3C600D4F3BB /* StorageService.swift */; };
 		D1CF527B2B6A80B0004BE118 /* FavoritesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CF527A2B6A80B0004BE118 /* FavoritesCollectionView.swift */; };
 		D1CF527D2B6A908E004BE118 /* FavoritesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CF527C2B6A908E004BE118 /* FavoritesCVC.swift */; };
 		D1D05A102B14A1DA00135D53 /* IngredientsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A0F2B14A1DA00135D53 /* IngredientsTVC.swift */; };
-		D1D05A122B14A42600135D53 /* IngredientsTVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */; };
 		D1D05A182B14EFAB00135D53 /* DrinkDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A172B14EFAB00135D53 /* DrinkDetailVC.swift */; };
 		D1D05A1A2B15DB1200135D53 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A192B15DB1200135D53 /* CacheService.swift */; };
 		D1FFC6D32B1CEF4600AD22AE /* IngredientDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FFC6D22B1CEF4600AD22AE /* IngredientDetailVC.swift */; };
@@ -44,7 +41,6 @@
 /* Begin PBXFileReference section */
 		D1307FC72B39E46600728525 /* UISearchBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExt.swift; sourceTree = "<group>"; };
 		D13DB2572B544E78003C6D3F /* SelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionVC.swift; sourceTree = "<group>"; };
-		D13DB2592B545603003C6D3F /* SelectionVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionVCExt.swift; sourceTree = "<group>"; };
 		D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		D17D79802AFF9AAD0063851D /* Cocktail Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cocktail Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17D79832AFF9AAD0063851D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,12 +59,10 @@
 		D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D19C1D5E2B0BDB6D00B6AD6A /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
 		D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogCell.xib; sourceTree = "<group>"; };
-		D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTVCExt.swift; sourceTree = "<group>"; };
 		D1CDC73D2B63C3C600D4F3BB /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		D1CF527A2B6A80B0004BE118 /* FavoritesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionView.swift; sourceTree = "<group>"; };
 		D1CF527C2B6A908E004BE118 /* FavoritesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCVC.swift; sourceTree = "<group>"; };
 		D1D05A0F2B14A1DA00135D53 /* IngredientsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTVC.swift; sourceTree = "<group>"; };
-		D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTVCExt.swift; sourceTree = "<group>"; };
 		D1D05A172B14EFAB00135D53 /* DrinkDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailVC.swift; sourceTree = "<group>"; };
 		D1D05A192B15DB1200135D53 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		D1FFC6D22B1CEF4600AD22AE /* IngredientDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailVC.swift; sourceTree = "<group>"; };
@@ -208,10 +202,7 @@
 		D19C1D622B0BEAF400B6AD6A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */,
-				D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */,
 				D1307FC72B39E46600728525 /* UISearchBarExt.swift */,
-				D13DB2592B545603003C6D3F /* SelectionVCExt.swift */,
 				D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */,
 			);
 			path = Extensions;
@@ -321,14 +312,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D13DB25A2B545603003C6D3F /* SelectionVCExt.swift in Sources */,
 				D199F8A32B286974005B42FE /* CocktailsCVC.swift in Sources */,
-				D1D05A122B14A42600135D53 /* IngredientsTVCExt.swift in Sources */,
 				D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */,
 				D1D05A182B14EFAB00135D53 /* DrinkDetailVC.swift in Sources */,
 				D17D79AC2AFFC1820063851D /* CatalogTVC.swift in Sources */,
 				D19C1D5D2B0BC37500B6AD6A /* NetworkService.swift in Sources */,
-				D19C1D642B0BEB0900B6AD6A /* CatalogTVCExt.swift in Sources */,
 				D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */,
 				D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */,
 				D1FFC6D32B1CEF4600AD22AE /* IngredientDetailVC.swift in Sources */,

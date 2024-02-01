@@ -29,7 +29,7 @@ class DrinkDetailVC: UIViewController {
         fetchDrinkRealmModel()
     }
     
-    @IBAction func favoriteBtnTapped(_ sender: UIButton) {
+    @IBAction private func favoriteBtnTapped(_ sender: UIButton) {
         
         if let drinkRealmModel {
             StorageService.deleteFavoriteDrink(drinkToDelete: drinkRealmModel)
