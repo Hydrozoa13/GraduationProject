@@ -532,7 +532,7 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="1358"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rck-fb-qxj">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="851.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="901.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cocktail Recipes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTQ-DB-ub2">
                                                 <rect key="frame" x="25" y="24.999999999999996" width="343" height="48.666666666666657"/>
@@ -580,7 +580,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="alB-fG-2Eg">
-                                                <rect key="frame" x="15" y="586.66666666666663" width="363" height="250"/>
+                                                <rect key="frame" x="15" y="586.66666666666663" width="363" height="300"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaU-mG-xzm">
                                                         <rect key="frame" x="15" y="15" width="333" height="37"/>
@@ -595,7 +595,7 @@
                                                 <color key="backgroundColor" red="0.2279961586" green="0.22906288929999999" blue="0.24534105580000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstItem="NaU-mG-xzm" firstAttribute="top" secondItem="alB-fG-2Eg" secondAttribute="top" constant="15" id="OBk-lk-hAu"/>
-                                                    <constraint firstAttribute="height" constant="250" id="VBg-3j-bh9"/>
+                                                    <constraint firstAttribute="height" constant="300" id="VBg-3j-bh9"/>
                                                     <constraint firstAttribute="trailing" secondItem="NaU-mG-xzm" secondAttribute="trailing" constant="15" id="bKf-jB-cCV"/>
                                                     <constraint firstItem="NaU-mG-xzm" firstAttribute="leading" secondItem="alB-fG-2Eg" secondAttribute="leading" constant="15" id="l1D-k8-FyY"/>
                                                 </constraints>

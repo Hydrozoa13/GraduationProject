@@ -16,6 +16,8 @@ class FavoritesCollectionView: UICollectionView {
     init() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 15
+
         super.init(frame: .zero, collectionViewLayout: layout)
         
         delegate = self
@@ -24,6 +26,13 @@ class FavoritesCollectionView: UICollectionView {
         register(FavoritesCVC.self, forCellWithReuseIdentifier: FavoritesCVC.reuseId)
         
         translatesAutoresizingMaskIntoConstraints = false
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
+        
+        contentInset = UIEdgeInsets(top: 0, left: 0,
+                                    bottom: 0, right: 0)
+        
+        backgroundColor = #colorLiteral(red: 0.2277548909, green: 0.2291080356, blue: 0.2468935847, alpha: 1)
         
         setNotificationToken()
     }
@@ -62,10 +71,11 @@ extension FavoritesCollectionView: UICollectionViewDelegate, UICollectionViewDat
         let cell = dequeueReusableCell(withReuseIdentifier: FavoritesCVC.reuseId, for: indexPath) as! FavoritesCVC
         let favoriteCocktail = favoriteDrinksList[indexPath.row]
         cell.thumbnailUrl = favoriteCocktail.strDrinkThumb
+        cell.favoriteCocktailName = favoriteCocktail.strDrink
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: (bounds.width - 15) / 2, height: bounds.height )
+    }
 }
