@@ -112,6 +112,7 @@ class DrinkDetailVC: UIViewController {
                 self?.imageView.layer.cornerRadius = 15
                 self?.imageView.image = image
                 self?.activityIndicator.stopAnimating()
+                self?.favoriteBtn.isHidden = false
             }
         }
     }

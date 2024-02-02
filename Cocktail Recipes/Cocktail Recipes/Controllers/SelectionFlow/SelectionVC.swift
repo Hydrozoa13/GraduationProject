@@ -34,7 +34,7 @@ class SelectionVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         fetchDrink(url: ApiConstants.randomCocktailURL)
-        setLongPressRecognizer()
+        setTapGestureRecognizer()
         favoritesCollectionView.delegate = self
         favoritesCollectionView.dataSource = self
         setNotificationToken()
@@ -162,13 +162,13 @@ extension SelectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         CGSize(width: (collectionView.bounds.width - 15) / 2, height: collectionView.bounds.height )
     }
     
-    func setLongPressRecognizer() {
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
-        self.imageView.addGestureRecognizer(longPressRecognizer)
+    func setTapGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped(tapGestureRecognizer:)))
+        self.imageView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+    @objc func tapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        if tapGestureRecognizer.state == UIGestureRecognizer.State.ended {
             let vc = storyboard?.instantiateViewController(withIdentifier: "DrinkDetailVC") as! DrinkDetailVC
             vc.drink = self.drink
             present(vc, animated: true)
