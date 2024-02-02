@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SelectionVC: UIViewController {
     
@@ -19,6 +20,8 @@ class SelectionVC: UIViewController {
     private var drinksData = [String:[Drink]]()
     private var drink: Drink?
     private var favoritesCollectionView = FavoritesCollectionView()
+    private var favoriteDrinksList: Results<DrinkRealmModel> = StorageService.getFavoriteDrinksList()
+    private var notificationToken: NotificationToken?
     
     private var thumbnailUrl: String? {
         didSet {
@@ -32,6 +35,9 @@ class SelectionVC: UIViewController {
         setupUI()
         fetchDrink(url: ApiConstants.randomCocktailURL)
         setLongPressRecognizer()
+        favoritesCollectionView.delegate = self
+        favoritesCollectionView.dataSource = self
+        setNotificationToken()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,9 +107,60 @@ class SelectionVC: UIViewController {
             }
         }.resume()
     }
+    
+    private func setNotificationToken() {
+        
+        notificationToken = favoriteDrinksList.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let collectionView = self?.favoritesCollectionView else { return }
+            
+            switch changes {
+                case .initial:
+                    collectionView.reloadData()
+                case .update(_, let deletions, let insertions, _):
+                    collectionView.performBatchUpdates({
+                        collectionView.deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
+                        collectionView.insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
+                    })
+                case .error(let error):
+                    fatalError("\(error)")
+            }
+        }
+    }
+    
+    private func makeDrinkModel(from favoriteDrink: DrinkRealmModel) -> Drink {
+        
+        let drink = Drink(idDrink: favoriteDrink.idDrink,
+                          strDrink: favoriteDrink.strDrink,
+                          strDrinkThumb: favoriteDrink.strDrinkThumb)
+        return drink
+    }
 }
 
-extension SelectionVC {
+extension SelectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Catalog", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DrinkDetailVC") as! DrinkDetailVC
+        let drink = makeDrinkModel(from: favoriteDrinksList[indexPath.row])
+        vc.drink = drink
+        present(vc, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        favoriteDrinksList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = favoritesCollectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCVC.reuseId, for: indexPath) as! FavoritesCVC
+        let favoriteCocktail = favoriteDrinksList[indexPath.row]
+        cell.thumbnailUrl = favoriteCocktail.strDrinkThumb
+        cell.favoriteCocktailName = favoriteCocktail.strDrink
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: (collectionView.bounds.width - 15) / 2, height: collectionView.bounds.height )
+    }
     
     func setLongPressRecognizer() {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
