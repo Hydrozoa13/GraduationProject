@@ -7,13 +7,12 @@
 
 import UIKit
 
-class IngredientsTVC: UITableViewController {
+final class IngredientsTVC: UITableViewController {
 
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    private var ingredientsData = [String:[Ingredient]]()
     private var ingredients = [Ingredient]()
-    private var filteredIngredients = [Ingredient]()
+    private lazy var filteredIngredients = [Ingredient]()
     private var isSearching = false
     
     override func viewDidLoad() {
@@ -79,7 +78,7 @@ class IngredientsTVC: UITableViewController {
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                ingredientsData = try JSONDecoder().decode([String:[Ingredient]].self, from: data)
+                let ingredientsData = try JSONDecoder().decode([String:[Ingredient]].self, from: data)
                 guard let array = ingredientsData["drinks"] else { return }
                 ingredients = array
             } catch {

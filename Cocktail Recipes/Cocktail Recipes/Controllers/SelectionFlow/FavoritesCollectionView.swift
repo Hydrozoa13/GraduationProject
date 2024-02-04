@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoritesCollectionView: UICollectionView {
+final class FavoritesCollectionView: UICollectionView {
     
     init() {
         let layout = UICollectionViewFlowLayout()

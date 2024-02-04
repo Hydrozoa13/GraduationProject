@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DrinkDetailVC: UIViewController {
+final class DrinkDetailVC: UIViewController {
     
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var imageView: UIImageView!
@@ -19,7 +19,6 @@ class DrinkDetailVC: UIViewController {
     var drink: Drink? { didSet { getThumbnailUrl() } }
     private var drinkRealmModel: DrinkRealmModel? { didSet { setImageForFavoriteBtn() } }
     
-    private var drinkData = [String:[Drink]]()
     private var updatedDrink: Drink?
     
     override func viewDidLoad() {
@@ -37,7 +36,7 @@ class DrinkDetailVC: UIViewController {
             self.drinkRealmModel = nil
         } else {
             guard let drink,
-                  let favoriteDrink = makeDrinkRealmModel(from: drink) else { return }
+                  let favoriteDrink = StorageService.makeDrinkRealmModel(from: drink) else { return }
             
             StorageService.saveFavoriteDrink(favoriteDrink: favoriteDrink)
             sender.setImage(UIImage(named: "favorite"), for: .normal)
@@ -53,7 +52,7 @@ class DrinkDetailVC: UIViewController {
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                drinkData = try JSONDecoder().decode([String:[Drink]].self, from: data)
+                let drinkData = try JSONDecoder().decode([String:[Drink]].self, from: data)
                 updatedDrink = drinkData["drinks"]?.first
             } catch {
                 print(error)
@@ -120,19 +119,6 @@ class DrinkDetailVC: UIViewController {
     private func fetchDrinkRealmModel() {
         guard let drink else { return }
         drinkRealmModel = StorageService.getDrinkRealmModel(by: drink.idDrink)
-    }
-    
-    private func makeDrinkRealmModel(from drink: Drink) -> DrinkRealmModel? {
-        
-        guard let strDrink = drink.strDrink,
-              let strDrinkThumb = drink.strDrinkThumb else { return nil }
-        
-        let favoriteDrink = DrinkRealmModel()
-        favoriteDrink.idDrink = drink.idDrink
-        favoriteDrink.strDrink = strDrink
-        favoriteDrink.strDrinkThumb = strDrinkThumb
-        
-        return favoriteDrink
     }
     
     private func setImageForFavoriteBtn() {

@@ -74,7 +74,7 @@ struct Drink: Codable {
     }
 }
 
-class DrinkRealmModel: Object {
+final class DrinkRealmModel: Object {
     @Persisted var idDrink = ""
     @Persisted var strDrink = ""
     @Persisted var strDrinkThumb = ""

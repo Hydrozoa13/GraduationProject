@@ -9,7 +9,8 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class NetworkService {
+final class NetworkService {
+    
     static func getThumbnail(thumbnailUrl: String,
                              callback: @escaping (_ result: UIImage?,
                                                   _ error: AFError?) -> ()) {

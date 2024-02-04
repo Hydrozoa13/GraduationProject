@@ -6,17 +6,27 @@
 //
 
 import UIKit
+import RealmSwift
 
-class CocktailsCVC: UICollectionViewController {
+final class CocktailsCVC: UICollectionViewController {
     
-    var ingredient: Ingredient?
-    private var cocktailsData = [String:[Drink]]()
-    private var cocktails = [Drink]()
+    lazy var isTappedFromFavoriteView = false {
+        didSet {
+            StorageService.setNotificationToken(notificationToken: &notificationToken,
+                                                for: favoriteDrinksList,
+                                                to: self.collectionView)
+        }
+    }
+    
+    private lazy var favoriteDrinksList = StorageService.getFavoriteDrinksList()
+    private var notificationToken: NotificationToken?
+    
+    var ingredient: Ingredient? { didSet { fetchCocktails(strIngredient: ingredient?.strIngredient1) } }
+    private lazy var cocktails = [Drink]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        fetchCocktails(strIngredient: ingredient?.strIngredient1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,12 +37,13 @@ class CocktailsCVC: UICollectionViewController {
     // MARK: - UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        cocktails.count
+        let count = isTappedFromFavoriteView ? favoriteDrinksList.count : cocktails.count
+        return count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        let cocktail = cocktails[indexPath.row]
+        let cocktail = isTappedFromFavoriteView ? StorageService.makeDrinkModel(from: favoriteDrinksList[indexPath.row]) : cocktails[indexPath.row]
         cell.thumbnailUrl = cocktail.strDrinkThumb
         cell.label.text = cocktail.strDrink
         return cell
@@ -43,9 +54,14 @@ class CocktailsCVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Catalog", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DrinkDetailVC") as! DrinkDetailVC
-        let drink = cocktails[indexPath.row]
+        let drink = isTappedFromFavoriteView ? StorageService.makeDrinkModel(from: favoriteDrinksList[indexPath.row]) : cocktails[indexPath.row]
         vc.drink = drink
-        navigationController?.present(vc, animated: true)
+        
+        if isTappedFromFavoriteView {
+            present(vc, animated: true)
+        } else {
+            navigationController?.present(vc, animated: true)
+        }
     }
     
     //MARK: - Private functions
@@ -63,7 +79,7 @@ class CocktailsCVC: UICollectionViewController {
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                cocktailsData = try JSONDecoder().decode([String:[Drink]].self, from: data)
+                let cocktailsData = try JSONDecoder().decode([String:[Drink]].self, from: data)
                 guard let array = cocktailsData["drinks"] else { return }
                 cocktails = array
             } catch {

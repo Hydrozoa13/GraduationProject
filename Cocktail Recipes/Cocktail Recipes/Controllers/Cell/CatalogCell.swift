@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class CatalogCell: UITableViewCell {
+final class CatalogCell: UITableViewCell {
     
     @IBOutlet private weak var cocktailThumb: UIImageView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!

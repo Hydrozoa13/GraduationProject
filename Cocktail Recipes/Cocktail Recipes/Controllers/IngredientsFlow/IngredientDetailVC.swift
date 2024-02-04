@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IngredientDetailVC: UIViewController {
+final class IngredientDetailVC: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
@@ -16,7 +16,6 @@ class IngredientDetailVC: UIViewController {
     @IBOutlet private weak var strDescription: UILabel!
     
     var ingredient: Ingredient? { didSet { getThumbnailUrl() } }
-    private var ingredientData = [String:[Ingredient]]()
     private var updatedIngredient: Ingredient?
 
     override func viewDidLoad() {
@@ -33,7 +32,7 @@ class IngredientDetailVC: UIViewController {
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                ingredientData = try JSONDecoder().decode([String:[Ingredient]].self, from: data)
+                let ingredientData = try JSONDecoder().decode([String:[Ingredient]].self, from: data)
                 updatedIngredient = ingredientData["ingredients"]?.first
             } catch {
                 print(error)

@@ -7,15 +7,14 @@
 
 import UIKit
 
-class CatalogTVC: UITableViewController {
+final class CatalogTVC: UITableViewController {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    private var drinksData = [String:[Drink]]()
     private var alcoholicDrinks = [Drink]()
     private var nonAlcoholicDrinks = [Drink]()
-    private var filteredAlcoholicDrinks = [Drink]()
-    private var filteredNonAlcoholicDrinks = [Drink]()
+    private lazy var filteredAlcoholicDrinks = [Drink]()
+    private lazy var filteredNonAlcoholicDrinks = [Drink]()
     private var isSearching = false
     
     override func viewDidLoad() {
@@ -122,7 +121,7 @@ class CatalogTVC: UITableViewController {
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                drinksData = try JSONDecoder().decode([String:[Drink]].self, from: data)
+                let drinksData = try JSONDecoder().decode([String:[Drink]].self, from: data)
                 guard let array = drinksData["drinks"] else { return }
                 switch drinkType {
                     case .alcoholic: alcoholicDrinks = array

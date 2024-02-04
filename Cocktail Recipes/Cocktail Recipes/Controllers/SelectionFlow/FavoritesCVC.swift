@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoritesCVC: UICollectionViewCell {
+final class FavoritesCVC: UICollectionViewCell {
     
     static let reuseId = "FavoritesCVC"
     
