@@ -10,6 +10,7 @@ import RealmSwift
 
 final class SelectionVC: UIViewController {
     
+    @IBOutlet weak private var scrollView: UIScrollView!
     @IBOutlet weak private var backgroundView: UIView!
     @IBOutlet weak private var appNameLbl: UILabel!
     @IBOutlet weak private var imageView: UIImageView!
@@ -56,6 +57,7 @@ final class SelectionVC: UIViewController {
     
     @IBAction private func randomCocktailBtnPressed(_ sender: UIButton) {
         sender.flashAnimation()
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         fetchDrink(url: ApiConstants.randomCocktailURL)
     }
     

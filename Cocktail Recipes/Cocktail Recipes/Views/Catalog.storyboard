@@ -656,6 +656,7 @@
                         <outlet property="favoritesBackgroundView" destination="alB-fG-2Eg" id="9HA-6q-iop"/>
                         <outlet property="imageView" destination="aOw-Dv-WQC" id="Z3I-0G-uhy"/>
                         <outlet property="randomCocktailBtn" destination="3o8-BP-YJd" id="UVp-fl-7OX"/>
+                        <outlet property="scrollView" destination="IYw-FY-Ue7" id="dad-Fg-ouo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROL-bp-qaE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
