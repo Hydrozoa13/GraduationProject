@@ -12,9 +12,7 @@ final class CocktailsCVC: UICollectionViewController {
     
     lazy var isTappedFromFavoriteView = false {
         didSet {
-            StorageService.setNotificationToken(notificationToken: &notificationToken,
-                                                for: favoriteDrinksList,
-                                                to: self.collectionView)
+            setNotificationToken()
         }
     }
     
@@ -96,5 +94,28 @@ final class CocktailsCVC: UICollectionViewController {
         let sizeWH = UIScreen.main.bounds.width / 2 - 5
         layout.itemSize = CGSize(width: sizeWH, height: sizeWH)
         collectionView.collectionViewLayout = layout
+    }
+    
+    private func setNotificationToken() {
+        notificationToken = favoriteDrinksList.observe { [weak self] (changes: RealmCollectionChange) in
+            
+            guard let self else { return }
+            
+            switch changes {
+                case .initial: collectionView.reloadData()
+                case .update(_, let deletions, let insertions, _):
+                    collectionView.performBatchUpdates({
+                        self.collectionView.deleteItems(at: deletions.map { IndexPath(row: $0, section: 0)})
+                        self.collectionView.insertItems(at: insertions.map { IndexPath(row: $0, section: 0)})
+                    })
+                case .error(let error): fatalError("\(error)")
+            }
+            
+            if favoriteDrinksList.count == 0 {
+                for _ in 1...2 {
+                    self.dismiss(animated: true)
+                }
+            }
+        }
     }
 }

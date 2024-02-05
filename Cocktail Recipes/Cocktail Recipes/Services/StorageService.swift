@@ -5,7 +5,7 @@
 //  Created by Евгений Лойко on 26.01.24.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
 let realm = try! Realm()
@@ -14,6 +14,10 @@ final class StorageService {
     
     static func getFavoriteDrinksList() -> Results<DrinkRealmModel> {
         realm.objects(DrinkRealmModel.self)
+    }
+    
+    static func getCountOfFavorites() -> Int {
+        realm.objects(DrinkRealmModel.self).count
     }
     
     static func getDrinkRealmModel(by id: String) -> DrinkRealmModel? {
@@ -68,25 +72,6 @@ final class StorageService {
             }
         } catch {
             print("deleteFavoriteDrink error \(error)")
-        }
-    }
-    
-    static func setNotificationToken(notificationToken: inout NotificationToken?, for list: Results<DrinkRealmModel>, to collectionView: UICollectionView?) {
-        
-        notificationToken = list.observe { (changes: RealmCollectionChange) in
-            guard let collectionView  else { return }
-            
-            switch changes {
-                case .initial:
-                    collectionView.reloadData()
-                case .update(_, let deletions, let insertions, _):
-                    collectionView.performBatchUpdates({
-                        collectionView.deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
-                        collectionView.insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
-                    })
-                case .error(let error):
-                    fatalError("\(error)")
-            }
         }
     }
     

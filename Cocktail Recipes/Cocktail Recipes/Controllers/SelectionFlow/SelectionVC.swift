@@ -34,12 +34,9 @@ final class SelectionVC: UIViewController {
         setupUI()
         fetchDrink(url: ApiConstants.randomCocktailURL)
         setTapGestureRecognizer()
-        setLongPressRecognizer()
         favoritesCollectionView.delegate = self
         favoritesCollectionView.dataSource = self
-        StorageService.setNotificationToken(notificationToken: &notificationToken,
-                                            for: favoriteDrinksList,
-                                            to: favoritesCollectionView)
+        setNotificationToken()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,6 +106,30 @@ final class SelectionVC: UIViewController {
             }
         }.resume()
     }
+    
+    private func setNotificationToken() {
+        
+        notificationToken = favoriteDrinksList.observe { [weak self] (changes: RealmCollectionChange) in
+            
+            guard let self else { return }
+            
+            switch changes {
+                case .initial: favoritesCollectionView.reloadData()
+                case .update(_, let deletions, let insertions, _):
+                    favoritesCollectionView.performBatchUpdates({
+                        if deletions.count > 0 {
+                            self.favoritesCollectionView.deleteItems(at: deletions.map { IndexPath(row: $0, section: 0) })
+                            self.favoritesCollectionView.listCount -= deletions.count
+                        } else if insertions.count > 0 {
+                            self.favoritesCollectionView.insertItems(at: insertions.map { IndexPath(row: $0, section: 0) })
+                            self.favoritesCollectionView.listCount += insertions.count
+                        }
+                    })
+                case .error(let error): fatalError("\(error)")
+            }
+            checkLongPressRecognizer()
+        }
+    }
 }
 
 extension SelectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -145,6 +166,14 @@ extension SelectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     func setLongPressRecognizer() {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
         favoritesBackgroundView.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    func checkLongPressRecognizer() {
+        if favoriteDrinksList.count > 0, favoritesBackgroundView.gestureRecognizers == nil {
+            setLongPressRecognizer()
+        } else if favoriteDrinksList.count == 0 {
+            favoritesBackgroundView.gestureRecognizers = nil
+        }
     }
     
     @objc func tapped(tapGestureRecognizer: UITapGestureRecognizer) {
