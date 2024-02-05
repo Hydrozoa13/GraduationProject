@@ -86,6 +86,7 @@ final class IngredientsTVC: UITableViewController {
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.animateTableView()
             }
         }.resume()
     }

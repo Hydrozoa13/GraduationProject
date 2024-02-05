@@ -132,6 +132,7 @@ final class CatalogTVC: UITableViewController {
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.animateTableView()
             }
         }.resume()
     }

@@ -27,6 +27,7 @@
 		D19C1D5D2B0BC37500B6AD6A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */; };
 		D19C1D602B0BDB6D00B6AD6A /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D5E2B0BDB6D00B6AD6A /* CatalogCell.swift */; };
 		D19C1D612B0BDB6D00B6AD6A /* CatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */; };
+		D1C3E1EA2B71153D00B1A292 /* UITableViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C3E1E92B71153D00B1A292 /* UITableViewControllerExt.swift */; };
 		D1CDC73A2B63C11600D4F3BB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D1CDC7392B63C11600D4F3BB /* Realm */; };
 		D1CDC73C2B63C11600D4F3BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D1CDC73B2B63C11600D4F3BB /* RealmSwift */; };
 		D1CDC73E2B63C3C600D4F3BB /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CDC73D2B63C3C600D4F3BB /* StorageService.swift */; };
@@ -59,6 +60,7 @@
 		D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D19C1D5E2B0BDB6D00B6AD6A /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
 		D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogCell.xib; sourceTree = "<group>"; };
+		D1C3E1E92B71153D00B1A292 /* UITableViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExt.swift; sourceTree = "<group>"; };
 		D1CDC73D2B63C3C600D4F3BB /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		D1CF527A2B6A80B0004BE118 /* FavoritesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionView.swift; sourceTree = "<group>"; };
 		D1CF527C2B6A908E004BE118 /* FavoritesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCVC.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				D1307FC72B39E46600728525 /* UISearchBarExt.swift */,
 				D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */,
+				D1C3E1E92B71153D00B1A292 /* UITableViewControllerExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				D1FFC6D32B1CEF4600AD22AE /* IngredientDetailVC.swift in Sources */,
 				D199F8A72B2869AB005B42FE /* CollectionViewCell.swift in Sources */,
 				D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */,
+				D1C3E1EA2B71153D00B1A292 /* UITableViewControllerExt.swift in Sources */,
 				D1CDC73E2B63C3C600D4F3BB /* StorageService.swift in Sources */,
 				D1CF527D2B6A908E004BE118 /* FavoritesCVC.swift in Sources */,
 				D1D05A102B14A1DA00135D53 /* IngredientsTVC.swift in Sources */,
