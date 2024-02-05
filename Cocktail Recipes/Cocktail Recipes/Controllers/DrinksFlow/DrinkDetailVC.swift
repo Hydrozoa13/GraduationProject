@@ -25,6 +25,10 @@ final class DrinkDetailVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         fetchDrinkDetails(drinkId: drink?.idDrink)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchDrinkRealmModel()
     }
     

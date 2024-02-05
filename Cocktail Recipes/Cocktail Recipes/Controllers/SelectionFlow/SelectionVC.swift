@@ -169,9 +169,9 @@ extension SelectionVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     }
     
     func checkLongPressRecognizer() {
-        if favoriteDrinksList.count > 0, favoritesBackgroundView.gestureRecognizers == nil {
+        if favoriteDrinksList.count > 2, favoritesBackgroundView.gestureRecognizers == nil {
             setLongPressRecognizer()
-        } else if favoriteDrinksList.count == 0 {
+        } else if favoriteDrinksList.count == 2 {
             favoritesBackgroundView.gestureRecognizers = nil
         }
     }

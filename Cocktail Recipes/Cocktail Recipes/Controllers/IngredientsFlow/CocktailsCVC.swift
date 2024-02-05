@@ -111,7 +111,7 @@ final class CocktailsCVC: UICollectionViewController {
                 case .error(let error): fatalError("\(error)")
             }
             
-            if favoriteDrinksList.count == 0 {
+            if favoriteDrinksList.count == 2 {
                 for _ in 1...2 {
                     self.dismiss(animated: true)
                 }
