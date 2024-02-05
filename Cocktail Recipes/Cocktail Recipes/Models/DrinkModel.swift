@@ -78,4 +78,5 @@ final class DrinkRealmModel: Object {
     @Persisted var idDrink = ""
     @Persisted var strDrink = ""
     @Persisted var strDrinkThumb = ""
+    @Persisted var date = Date()
 }

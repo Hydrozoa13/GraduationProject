@@ -22,8 +22,7 @@ final class CatalogTVC: UITableViewController {
         searchBar.delegate = self
         searchBar.setSearchBarUI(with: "Find a cocktail")
         setupUI()
-        fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic)
-        fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
+        setDispatchGroupForRequests()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,7 +115,7 @@ final class CatalogTVC: UITableViewController {
                                  forCellReuseIdentifier: "Cell")
     }
     
-    private func fetchDrinks(url: URL?, drinkType: DrinkType) {
+    private func fetchDrinks(url: URL?, drinkType: DrinkType, completion: @escaping () -> Void ) {
         guard let url else { return }
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
@@ -131,10 +130,27 @@ final class CatalogTVC: UITableViewController {
                 print(error)
             }
             DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.animateTableView()
+                completion()
             }
         }.resume()
+    }
+    
+    private func setDispatchGroupForRequests() {
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic) {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic) {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            self?.animateTableView()
+        }
     }
 }
 

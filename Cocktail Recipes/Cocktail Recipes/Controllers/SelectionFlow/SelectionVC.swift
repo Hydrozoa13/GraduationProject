@@ -19,7 +19,7 @@ final class SelectionVC: UIViewController {
     private var isViewLoadedFirstly = true
     private var drink: Drink?
     private var favoritesCollectionView = FavoritesCollectionView()
-    private var favoriteDrinksList: Results<DrinkRealmModel> = StorageService.getFavoriteDrinksList()
+    private var favoriteDrinksList = StorageService.getFavoriteDrinksList()
     private var notificationToken: NotificationToken?
     
     private var thumbnailUrl: String? {

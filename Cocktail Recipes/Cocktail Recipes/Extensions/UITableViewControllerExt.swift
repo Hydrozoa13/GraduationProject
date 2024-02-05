@@ -11,6 +11,8 @@ extension UITableViewController {
     
     func animateTableView() {
         
+        tableView.reloadData()
+        
         let cells = tableView.visibleCells
         let tableViewHeight = tableView.bounds.height
         var delay = 0.0

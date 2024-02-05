@@ -13,7 +13,7 @@ let realm = try! Realm()
 final class StorageService {
     
     static func getFavoriteDrinksList() -> Results<DrinkRealmModel> {
-        realm.objects(DrinkRealmModel.self)
+        realm.objects(DrinkRealmModel.self).sorted(byKeyPath: "date", ascending: false)
     }
     
     static func getCountOfFavorites() -> Int {
