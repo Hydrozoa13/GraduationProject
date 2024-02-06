@@ -15,6 +15,7 @@ final class DrinkDetailVC: UIViewController {
     @IBOutlet private weak var strDrink: UILabel!
     @IBOutlet private var ingredientsLbls: [UILabel]!
     @IBOutlet private weak var strInstructions: UILabel!
+    @IBOutlet private weak var instructionsBackgroundView: UIView!
     
     var drink: Drink? { didSet { getThumbnailUrl() } }
     private var drinkRealmModel: DrinkRealmModel? { didSet { setImageForFavoriteBtn() } }
@@ -72,6 +73,7 @@ final class DrinkDetailVC: UIViewController {
         favoriteBtn.layer.cornerRadius = 15
         favoriteBtn.layer.masksToBounds = false
         strDrink.text = drink?.strDrink
+        instructionsBackgroundView.layer.cornerRadius = 15
     }
     
     private func setupDrinkDetail() {
