@@ -14,6 +14,7 @@ final class IngredientDetailVC: UIViewController {
     @IBOutlet private weak var strIngredient: UILabel!
     @IBOutlet private var detailsLbls: [UILabel]!
     @IBOutlet private weak var strDescription: UILabel!
+    @IBOutlet private weak var descriptionBackgroundView: UIView!
     
     var ingredient: Ingredient? { didSet { getThumbnailUrl() } }
     private var updatedIngredient: Ingredient?
@@ -45,6 +46,7 @@ final class IngredientDetailVC: UIViewController {
     
     private func setupUI() {
         strIngredient.text = ingredient?.strIngredient1
+        descriptionBackgroundView.layer.cornerRadius = 15
     }
     
     private func setupIngredientDetail() {
@@ -69,7 +71,11 @@ final class IngredientDetailVC: UIViewController {
             
             detailLbl.isHidden = detailLbl.text != "" ? false : true
         }
-        strDescription.text = updatedIngredient?.strDescription != nil ? "Description:\n\n\(updatedIngredient?.strDescription ?? "")" : ""
+        
+        if let description = updatedIngredient?.strDescription, description != "" {
+            strDescription.text = "Description:\n\n\(description)"
+            descriptionBackgroundView.isHidden = false
+        }
     }
     
     private func getThumbnailUrl() {

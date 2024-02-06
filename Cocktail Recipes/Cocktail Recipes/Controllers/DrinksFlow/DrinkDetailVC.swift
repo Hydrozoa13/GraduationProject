@@ -9,6 +9,7 @@ import UIKit
 
 final class DrinkDetailVC: UIViewController {
     
+    @IBOutlet private weak var imageBackgroundView: UIView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var favoriteBtn: UIButton!
@@ -74,6 +75,7 @@ final class DrinkDetailVC: UIViewController {
         favoriteBtn.layer.masksToBounds = false
         strDrink.text = drink?.strDrink
         instructionsBackgroundView.layer.cornerRadius = 15
+        imageBackgroundView.layer.cornerRadius = 15
     }
     
     private func setupDrinkDetail() {
@@ -106,8 +108,10 @@ final class DrinkDetailVC: UIViewController {
             ingredientLbl.isHidden = ingredientLbl.text != "" ? false : true
         }
         
-        strInstructions.text = updatedDrink?.strInstructions != nil ?
-            "How to make:\n\n\(updatedDrink?.strInstructions ?? "")" : ""
+        if let instructions = updatedDrink?.strInstructions, instructions != "" {
+            strInstructions.text = "How to make:\n\n\(instructions)"
+            instructionsBackgroundView.isHidden = false
+        }
     }
     
     private func getThumbnailUrl() {
