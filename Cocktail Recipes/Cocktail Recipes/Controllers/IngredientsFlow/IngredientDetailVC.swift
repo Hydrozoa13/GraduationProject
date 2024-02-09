@@ -7,16 +7,16 @@
 
 import UIKit
 
-class IngredientDetailVC: UIViewController {
+final class IngredientDetailVC: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var strIngredient: UILabel!
     @IBOutlet private var detailsLbls: [UILabel]!
     @IBOutlet private weak var strDescription: UILabel!
+    @IBOutlet private weak var descriptionBackgroundView: UIView!
     
     var ingredient: Ingredient? { didSet { getThumbnailUrl() } }
-    private var ingredientData = [String:[Ingredient]]()
     private var updatedIngredient: Ingredient?
 
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class IngredientDetailVC: UIViewController {
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                ingredientData = try JSONDecoder().decode([String:[Ingredient]].self, from: data)
+                let ingredientData = try JSONDecoder().decode([String:[Ingredient]].self, from: data)
                 updatedIngredient = ingredientData["ingredients"]?.first
             } catch {
                 print(error)
@@ -46,6 +46,7 @@ class IngredientDetailVC: UIViewController {
     
     private func setupUI() {
         strIngredient.text = ingredient?.strIngredient1
+        descriptionBackgroundView.layer.cornerRadius = 15
     }
     
     private func setupIngredientDetail() {
@@ -70,7 +71,11 @@ class IngredientDetailVC: UIViewController {
             
             detailLbl.isHidden = detailLbl.text != "" ? false : true
         }
-        strDescription.text = updatedIngredient?.strDescription != nil ? "Description:\n\n\(updatedIngredient?.strDescription ?? "")" : ""
+        
+        if let description = updatedIngredient?.strDescription, description != "" {
+            strDescription.text = "Description:\n\n\(description)"
+            descriptionBackgroundView.isHidden = false
+        }
     }
     
     private func getThumbnailUrl() {

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "cocktail-glass-with-liquor.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

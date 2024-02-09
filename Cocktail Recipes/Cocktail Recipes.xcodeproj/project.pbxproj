@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1307FC82B39E46600728525 /* UISearchBarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1307FC72B39E46600728525 /* UISearchBarExt.swift */; };
+		D13DB2582B544E78003C6D3F /* SelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB2572B544E78003C6D3F /* SelectionVC.swift */; };
+		D13DB2602B5560A0003C6D3F /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */; };
 		D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79832AFF9AAD0063851D /* AppDelegate.swift */; };
 		D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79852AFF9AAD0063851D /* SceneDelegate.swift */; };
 		D17D798D2AFF9AAF0063851D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17D798C2AFF9AAF0063851D /* Assets.xcassets */; };
 		D17D79902AFF9AAF0063851D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D17D798E2AFF9AAF0063851D /* LaunchScreen.storyboard */; };
 		D17D799F2AFFA1F00063851D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D17D799E2AFFA1F00063851D /* Alamofire */; };
-		D17D79A22AFFA2920063851D /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D17D79A12AFFA2920063851D /* SwiftyJSON */; };
 		D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A32AFFA2CE0063851D /* ApiConstants.swift */; };
 		D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A52AFFA3AA0063851D /* DrinkModel.swift */; };
 		D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17D79A72AFFA6B80063851D /* IngredientModel.swift */; };
@@ -25,15 +27,26 @@
 		D19C1D5D2B0BC37500B6AD6A /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */; };
 		D19C1D602B0BDB6D00B6AD6A /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D5E2B0BDB6D00B6AD6A /* CatalogCell.swift */; };
 		D19C1D612B0BDB6D00B6AD6A /* CatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */; };
-		D19C1D642B0BEB0900B6AD6A /* CatalogTVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */; };
+		D1C3E1EA2B71153D00B1A292 /* UITableViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C3E1E92B71153D00B1A292 /* UITableViewControllerExt.swift */; };
+		D1C8B2EE2B7287BF0009E8CD /* SwiftyOnboardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C8B2EB2B7287BE0009E8CD /* SwiftyOnboardOverlay.swift */; };
+		D1C8B2EF2B7287BF0009E8CD /* SwiftyOnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C8B2EC2B7287BF0009E8CD /* SwiftyOnboardPage.swift */; };
+		D1C8B2F02B7287BF0009E8CD /* SwiftyOnboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C8B2ED2B7287BF0009E8CD /* SwiftyOnboard.swift */; };
+		D1C8B2F32B72888F0009E8CD /* SwiftyOnboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C8B2F22B72888F0009E8CD /* SwiftyOnboardVC.swift */; };
+		D1CDC73A2B63C11600D4F3BB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D1CDC7392B63C11600D4F3BB /* Realm */; };
+		D1CDC73C2B63C11600D4F3BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D1CDC73B2B63C11600D4F3BB /* RealmSwift */; };
+		D1CDC73E2B63C3C600D4F3BB /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CDC73D2B63C3C600D4F3BB /* StorageService.swift */; };
+		D1CF527B2B6A80B0004BE118 /* FavoritesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CF527A2B6A80B0004BE118 /* FavoritesCollectionView.swift */; };
+		D1CF527D2B6A908E004BE118 /* FavoritesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CF527C2B6A908E004BE118 /* FavoritesCVC.swift */; };
 		D1D05A102B14A1DA00135D53 /* IngredientsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A0F2B14A1DA00135D53 /* IngredientsTVC.swift */; };
-		D1D05A122B14A42600135D53 /* IngredientsTVCExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */; };
 		D1D05A182B14EFAB00135D53 /* DrinkDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A172B14EFAB00135D53 /* DrinkDetailVC.swift */; };
 		D1D05A1A2B15DB1200135D53 /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D05A192B15DB1200135D53 /* CacheService.swift */; };
 		D1FFC6D32B1CEF4600AD22AE /* IngredientDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FFC6D22B1CEF4600AD22AE /* IngredientDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D1307FC72B39E46600728525 /* UISearchBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExt.swift; sourceTree = "<group>"; };
+		D13DB2572B544E78003C6D3F /* SelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionVC.swift; sourceTree = "<group>"; };
+		D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		D17D79802AFF9AAD0063851D /* Cocktail Recipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cocktail Recipes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17D79832AFF9AAD0063851D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D17D79852AFF9AAD0063851D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,9 +64,15 @@
 		D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D19C1D5E2B0BDB6D00B6AD6A /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
 		D19C1D5F2B0BDB6D00B6AD6A /* CatalogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogCell.xib; sourceTree = "<group>"; };
-		D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTVCExt.swift; sourceTree = "<group>"; };
+		D1C3E1E92B71153D00B1A292 /* UITableViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExt.swift; sourceTree = "<group>"; };
+		D1C8B2EB2B7287BE0009E8CD /* SwiftyOnboardOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyOnboardOverlay.swift; sourceTree = "<group>"; };
+		D1C8B2EC2B7287BF0009E8CD /* SwiftyOnboardPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyOnboardPage.swift; sourceTree = "<group>"; };
+		D1C8B2ED2B7287BF0009E8CD /* SwiftyOnboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyOnboard.swift; sourceTree = "<group>"; };
+		D1C8B2F22B72888F0009E8CD /* SwiftyOnboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyOnboardVC.swift; sourceTree = "<group>"; };
+		D1CDC73D2B63C3C600D4F3BB /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		D1CF527A2B6A80B0004BE118 /* FavoritesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionView.swift; sourceTree = "<group>"; };
+		D1CF527C2B6A908E004BE118 /* FavoritesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCVC.swift; sourceTree = "<group>"; };
 		D1D05A0F2B14A1DA00135D53 /* IngredientsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTVC.swift; sourceTree = "<group>"; };
-		D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTVCExt.swift; sourceTree = "<group>"; };
 		D1D05A172B14EFAB00135D53 /* DrinkDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailVC.swift; sourceTree = "<group>"; };
 		D1D05A192B15DB1200135D53 /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		D1FFC6D22B1CEF4600AD22AE /* IngredientDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailVC.swift; sourceTree = "<group>"; };
@@ -64,7 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D17D79A22AFFA2920063851D /* SwiftyJSON in Frameworks */,
+				D1CDC73C2B63C11600D4F3BB /* RealmSwift in Frameworks */,
+				D1CDC73A2B63C11600D4F3BB /* Realm in Frameworks */,
 				D17D799F2AFFA1F00063851D /* Alamofire in Frameworks */,
 				D19C1D5B2B0BBB9800B6AD6A /* AlamofireImage in Frameworks */,
 			);
@@ -73,6 +93,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D13DB2562B544E4B003C6D3F /* SelectionFlow */ = {
+			isa = PBXGroup;
+			children = (
+				D13DB2572B544E78003C6D3F /* SelectionVC.swift */,
+				D1CF527A2B6A80B0004BE118 /* FavoritesCollectionView.swift */,
+				D1CF527C2B6A908E004BE118 /* FavoritesCVC.swift */,
+			);
+			path = SelectionFlow;
+			sourceTree = "<group>";
+		};
 		D17D79772AFF9AAD0063851D = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +122,7 @@
 		D17D79822AFF9AAD0063851D /* Cocktail Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				D1C8B2F12B7287FB0009E8CD /* Onboarding */,
 				D19C1D622B0BEAF400B6AD6A /* Extensions */,
 				D17D799C2AFFA10C0063851D /* Services */,
 				D17D799A2AFFA0E40063851D /* Models */,
@@ -144,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				D19C1D542B0BB7C400B6AD6A /* Cell */,
+				D13DB2562B544E4B003C6D3F /* SelectionFlow */,
 				D1FFC6D02B1CEEEE00AD22AE /* DrinksFlow */,
 				D1FFC6D12B1CEF0000AD22AE /* IngredientsFlow */,
 			);
@@ -155,6 +187,7 @@
 			children = (
 				D19C1D5C2B0BC37500B6AD6A /* NetworkService.swift */,
 				D1D05A192B15DB1200135D53 /* CacheService.swift */,
+				D1CDC73D2B63C3C600D4F3BB /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -180,10 +213,22 @@
 		D19C1D622B0BEAF400B6AD6A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D19C1D632B0BEB0900B6AD6A /* CatalogTVCExt.swift */,
-				D1D05A112B14A42600135D53 /* IngredientsTVCExt.swift */,
+				D1307FC72B39E46600728525 /* UISearchBarExt.swift */,
+				D13DB25F2B5560A0003C6D3F /* UIViewExt.swift */,
+				D1C3E1E92B71153D00B1A292 /* UITableViewControllerExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D1C8B2F12B7287FB0009E8CD /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D1C8B2ED2B7287BF0009E8CD /* SwiftyOnboard.swift */,
+				D1C8B2EB2B7287BE0009E8CD /* SwiftyOnboardOverlay.swift */,
+				D1C8B2EC2B7287BF0009E8CD /* SwiftyOnboardPage.swift */,
+				D1C8B2F22B72888F0009E8CD /* SwiftyOnboardVC.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		D1FFC6D02B1CEEEE00AD22AE /* DrinksFlow */ = {
@@ -224,8 +269,9 @@
 			name = "Cocktail Recipes";
 			packageProductDependencies = (
 				D17D799E2AFFA1F00063851D /* Alamofire */,
-				D17D79A12AFFA2920063851D /* SwiftyJSON */,
 				D19C1D5A2B0BBB9800B6AD6A /* AlamofireImage */,
+				D1CDC7392B63C11600D4F3BB /* Realm */,
+				D1CDC73B2B63C11600D4F3BB /* RealmSwift */,
 			);
 			productName = "Cocktail Recipes";
 			productReference = D17D79802AFF9AAD0063851D /* Cocktail Recipes.app */;
@@ -257,8 +303,8 @@
 			mainGroup = D17D79772AFF9AAD0063851D;
 			packageReferences = (
 				D17D799D2AFFA1F00063851D /* XCRemoteSwiftPackageReference "Alamofire" */,
-				D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				D19C1D592B0BBB9800B6AD6A /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				D1CDC7382B63C11500D4F3BB /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = D17D79812AFF9AAD0063851D /* Products */;
 			projectDirPath = "";
@@ -290,21 +336,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				D199F8A32B286974005B42FE /* CocktailsCVC.swift in Sources */,
-				D1D05A122B14A42600135D53 /* IngredientsTVCExt.swift in Sources */,
 				D17D79842AFF9AAD0063851D /* AppDelegate.swift in Sources */,
+				D1C8B2EE2B7287BF0009E8CD /* SwiftyOnboardOverlay.swift in Sources */,
 				D1D05A182B14EFAB00135D53 /* DrinkDetailVC.swift in Sources */,
 				D17D79AC2AFFC1820063851D /* CatalogTVC.swift in Sources */,
 				D19C1D5D2B0BC37500B6AD6A /* NetworkService.swift in Sources */,
-				D19C1D642B0BEB0900B6AD6A /* CatalogTVCExt.swift in Sources */,
 				D17D79A62AFFA3AA0063851D /* DrinkModel.swift in Sources */,
 				D17D79862AFF9AAD0063851D /* SceneDelegate.swift in Sources */,
 				D1FFC6D32B1CEF4600AD22AE /* IngredientDetailVC.swift in Sources */,
+				D1C8B2F02B7287BF0009E8CD /* SwiftyOnboard.swift in Sources */,
 				D199F8A72B2869AB005B42FE /* CollectionViewCell.swift in Sources */,
 				D17D79A42AFFA2CE0063851D /* ApiConstants.swift in Sources */,
+				D1C3E1EA2B71153D00B1A292 /* UITableViewControllerExt.swift in Sources */,
+				D1CDC73E2B63C3C600D4F3BB /* StorageService.swift in Sources */,
+				D1CF527D2B6A908E004BE118 /* FavoritesCVC.swift in Sources */,
+				D1C8B2F32B72888F0009E8CD /* SwiftyOnboardVC.swift in Sources */,
 				D1D05A102B14A1DA00135D53 /* IngredientsTVC.swift in Sources */,
+				D13DB2602B5560A0003C6D3F /* UIViewExt.swift in Sources */,
+				D13DB2582B544E78003C6D3F /* SelectionVC.swift in Sources */,
 				D17D79A82AFFA6B80063851D /* IngredientModel.swift in Sources */,
+				D1CF527B2B6A80B0004BE118 /* FavoritesCollectionView.swift in Sources */,
 				D19C1D602B0BDB6D00B6AD6A /* CatalogCell.swift in Sources */,
 				D1D05A1A2B15DB1200135D53 /* CacheService.swift in Sources */,
+				D1307FC82B39E46600728525 /* UISearchBarExt.swift in Sources */,
+				D1C8B2EF2B7287BF0009E8CD /* SwiftyOnboardPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,20 +596,20 @@
 				minimumVersion = 5.8.1;
 			};
 		};
-		D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
-			};
-		};
 		D19C1D592B0BBB9800B6AD6A /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.3.0;
+			};
+		};
+		D1CDC7382B63C11500D4F3BB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.46.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -565,15 +620,20 @@
 			package = D17D799D2AFFA1F00063851D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		D17D79A12AFFA2920063851D /* SwiftyJSON */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D17D79A02AFFA2920063851D /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
-			productName = SwiftyJSON;
-		};
 		D19C1D5A2B0BBB9800B6AD6A /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D19C1D592B0BBB9800B6AD6A /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
+		};
+		D1CDC7392B63C11600D4F3BB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1CDC7382B63C11500D4F3BB /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		D1CDC73B2B63C11600D4F3BB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1CDC7382B63C11500D4F3BB /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

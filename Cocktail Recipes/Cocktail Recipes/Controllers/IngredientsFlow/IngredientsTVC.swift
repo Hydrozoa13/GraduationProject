@@ -7,26 +7,33 @@
 
 import UIKit
 
-class IngredientsTVC: UITableViewController {
+final class IngredientsTVC: UITableViewController {
 
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    private var ingredientsData = [String:[Ingredient]]()
-    var ingredients = [Ingredient]()
-    var filteredIngredients = [Ingredient]()
-    var isSearching = false
+    private var ingredients = [Ingredient]()
+    private lazy var filteredIngredients = [Ingredient]()
+    private var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchBar.delegate = self
-        
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
-        tableView.addGestureRecognizer(longPressRecognizer)
-        
-        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
-                                 forCellReuseIdentifier: "Cell")
-        navigationItem.titleView = searchBar
+        searchBar.delegate = self
+        searchBar.setSearchBarUI(with: "Find an ingredient")
+        setupUI()
         fetchIngredients(url: ApiConstants.ingredientsListURL)
+        setLongPressRecognizer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Ingredients"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.title = ""
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     // MARK: - Table view delegate
@@ -59,22 +66,66 @@ class IngredientsTVC: UITableViewController {
     }
     
     //MARK: - Private functions
+    
+    private func setupUI() {
+        navigationItem.titleView = searchBar
+        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
+                                 forCellReuseIdentifier: "Cell")
+    }
 
     private func fetchIngredients(url: URL?) {
         guard let url else { return }
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                ingredientsData = try JSONDecoder().decode([String:[Ingredient]].self, from: data)
+                let ingredientsData = try JSONDecoder().decode([String:[Ingredient]].self, from: data)
                 guard let array = ingredientsData["drinks"] else { return }
                 ingredients = array
             } catch {
                 print(error)
             }
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.animateTableView()
             }
         }.resume()
+    }
+}
+
+extension IngredientsTVC: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if let clearButton = searchBar.searchTextField.value(forKey: "_clearButton") as? UIButton {
+            let img = clearButton.image(for: .normal)
+            let tintedClearImage = img?.withTintColor(.lightGray)
+            clearButton.setImage(tintedClearImage, for: .normal)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.view.viewWithTag(100)?.removeFromSuperview()
+        self.view.viewWithTag(101)?.removeFromSuperview()
+        
+        let text = searchText.lowercased()
+        filteredIngredients = ingredients.filter({$0.strIngredient1!.lowercased().contains(text)})
+        
+        if !text.isEmpty, filteredIngredients.isEmpty {
+            navigationItem.title = ""
+            searchBar.makeEmptyResultsLabel(with: searchText, for: self.view)
+        } else {
+            navigationItem.title = "Ingredients"
+        }
+        
+        isSearching = !searchText.isEmpty ? true : false
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+    
+    func setLongPressRecognizer() {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress(longPressGestureRecognizer:)))
+        tableView.addGestureRecognizer(longPressRecognizer)
     }
     
     @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
@@ -89,5 +140,3 @@ class IngredientsTVC: UITableViewController {
         }
     }
 }
-
-

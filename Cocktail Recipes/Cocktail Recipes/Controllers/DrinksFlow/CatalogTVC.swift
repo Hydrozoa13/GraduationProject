@@ -7,26 +7,22 @@
 
 import UIKit
 
-class CatalogTVC: UITableViewController {
+final class CatalogTVC: UITableViewController {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     
-    private var drinksData = [String:[Drink]]()
-    var alcoholicDrinks = [Drink]()
-    var nonAlcoholicDrinks = [Drink]()
-    var filteredAlcoholicDrinks = [Drink]()
-    var filteredNonAlcoholicDrinks = [Drink]()
-    var isSearching = false
+    private var alcoholicDrinks = [Drink]()
+    private var nonAlcoholicDrinks = [Drink]()
+    private lazy var filteredAlcoholicDrinks = [Drink]()
+    private lazy var filteredNonAlcoholicDrinks = [Drink]()
+    private var isSearching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchBar.delegate = self
-        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
-                                 forCellReuseIdentifier: "Cell")
-        navigationItem.titleView = searchBar
-        
-        fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic)
-        fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic)
+        searchBar.delegate = self
+        searchBar.setSearchBarUI(with: "Find a cocktail")
+        setupUI()
+        setDispatchGroupForRequests()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +53,12 @@ class CatalogTVC: UITableViewController {
     
         vc.drink = drink
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+               headerView.textLabel?.textColor = .lightGray
+        }
     }
     
     // MARK: - Table view data source
@@ -107,12 +109,18 @@ class CatalogTVC: UITableViewController {
 
     // MARK: - Private functions
     
-    private func fetchDrinks(url: URL?, drinkType: DrinkType) {
+    private func setupUI() {
+        navigationItem.titleView = searchBar
+        tableView.register(UINib(nibName: "CatalogCell", bundle: nil),
+                                 forCellReuseIdentifier: "Cell")
+    }
+    
+    private func fetchDrinks(url: URL?, drinkType: DrinkType, completion: @escaping () -> Void ) {
         guard let url else { return }
         URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
             guard let self, let data else { return }
             do {
-                drinksData = try JSONDecoder().decode([String:[Drink]].self, from: data)
+                let drinksData = try JSONDecoder().decode([String:[Drink]].self, from: data)
                 guard let array = drinksData["drinks"] else { return }
                 switch drinkType {
                     case .alcoholic: alcoholicDrinks = array
@@ -122,8 +130,60 @@ class CatalogTVC: UITableViewController {
                 print(error)
             }
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                completion()
             }
         }.resume()
+    }
+    
+    private func setDispatchGroupForRequests() {
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        fetchDrinks(url: ApiConstants.alcoholicURL, drinkType: .alcoholic) {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        fetchDrinks(url: ApiConstants.nonAlcoholicURL, drinkType: .nonAlcoholic) {
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            self?.animateTableView()
+        }
+    }
+}
+
+extension CatalogTVC: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if let clearButton = searchBar.searchTextField.value(forKey: "_clearButton") as? UIButton {
+            let img = clearButton.image(for: .normal)
+            let tintedClearImage = img?.withTintColor(.lightGray)
+            clearButton.setImage(tintedClearImage, for: .normal)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.view.viewWithTag(100)?.removeFromSuperview()
+        self.view.viewWithTag(101)?.removeFromSuperview()
+        
+        let text = searchText.lowercased()
+        filteredAlcoholicDrinks = alcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
+        filteredNonAlcoholicDrinks = nonAlcoholicDrinks.filter({$0.strDrink!.lowercased().contains(text)})
+        
+        if !text.isEmpty, filteredAlcoholicDrinks.isEmpty, filteredNonAlcoholicDrinks.isEmpty {
+            navigationItem.title = ""
+            searchBar.makeEmptyResultsLabel(with: searchText, for: self.view)
+        } else {
+            navigationItem.title = "Cocktails"
+        }
+        
+        isSearching = !searchText.isEmpty ? true : false
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
 }
